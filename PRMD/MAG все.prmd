@@ -1,0 +1,22 @@
+MAG1;ArchDayMAG;MT3;0 152 76;ArchDay;int;3600000;in;;;
+MAG1;ArchHourMAG;MT3;0 152 76;ArchHour;int;3600000;in;;;
+MAG1;ArchInterMAG;MT107;0 107;ArchInterfer;int;3600000;in;;;
+
+MAG1;Gexans;MT3;0 10;Single;float;5000;in;;;
+MAG1;Propane;MT3;0 14;Single;float;5000;in;;;
+MAG1;CO2;MT3;0 18;Single;float;5000;in;;;
+MAG1;N2;MT3;0 26;Single;float;5000;in;;;
+MAG1;H2O;MT3;0 38;Single;float;5000;in;;;
+MAG1;DevTime;MT3;0 170;Single;double;5000;in;;;
+
+MAG1;Ethan;MT3;0 12;Single;float;5000;in;;;
+MAG1;Methan;MT3;0 16;Single;float;5000;in;;;
+MAG1;Isobutane;MT3;0 20;Single;float;5000;in;;;
+MAG1;Isopentane;MT3;0 22;Single;float;5000;in;;;
+MAG1;Neopentane;MT3;0 24;Single;float;5000;in;;;
+MAG1;N_Pentane;MT3;0 28;Single;float;5000;in;;;
+MAG1;Oxygen;MT3;0 30;Single;float;5000;in;;;
+MAG1;N_Butane;MT3;0 32;Single;float;5000;in;;;
+MAG1;Helium;MT3;0 34;Single;float;5000;in;;;
+MAG1;Hydrogen;MT3;0 36;Single;float;5000;in;;;
+MAG1;DevTime;MT3;0 170;Single;double;50000;in;;;

@@ -1,0 +1,4 @@
+ERZ_NG;AB04;WebPar;td th 16;Single;string;50000;in;drkaDim;Единица измерения;
+ERZ_NG;GB52;WebPar;td th 16;Single;string;50000;in;zwkSerNr;Серийный номер;
+ERZ_NG;GB51;WebPar;td th 16;Single;string;50000;in;zwkPrinzip;Тип счетчика;
+ERZ_NG;ArchInterfer ERZ;WebArch;body th 4;ArchInterfer;float;60000;in;;;

@@ -1,0 +1,12 @@
+ioLogik;fO200;MT4;0 1 0 Hour fO2;SingleArch;float;5000;in;;;
+ioLogik;fO201;MT4;0 1 9 Day fO2;SingleArch;float;5000;in;;;
+ioLogik;FailArch;Virtual;0 0;FailArch;int;500;in;;;
+ioLogik;AI0MinClear;MT1;0 4145;Single;byte;20000;in;;;
+ioLogik;AI0MaxClear;MT1;0 4153;Single;byte;20000;in;;;
+ioLogik;fO2;MT4;0 1;Single;float;2000;in;;;
+ioLogik;AI01;MT4;0 3;Single;float;2000;in;;;
+ioLogik;AI02;MT4;0 5;Single;float;2000;in;;;
+ioLogik;AI03;MT4;0 7;Single;float;2000;in;;;
+ioLogik;DI00;MT4;0 9;Single;short;2000;in;;;
+ioLogik;DI01;MT4;0 10;Single;short;2000;in;;;
+ioLogik;DI02;MT4;0 11;Single;short;2000;in;;;

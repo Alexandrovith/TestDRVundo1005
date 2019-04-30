@@ -1,0 +1,12 @@
+Vympel500;Pabs;MT3;0 126;Single;float;4000;in;;;
+Vympel500;ContractHour;MT3;0 366;Single;int;4000;in;;;
+Vympel500;MethodRo;MT3;0 374;Single;int;18000000;in;;;
+Vympel500;Rst;MT3;0 388;Single;float;4000;in;;;
+Vympel500;N2;MT3;0 390;Single;float;4000;in;;;
+Vympel500;CO2;MT3;0 392;Single;float;4000;in;;;
+Vympel500;Qm;MT3;0 780;Single;float;4000;in;;;
+Vympel500;DevTime;MT3;0 1464;Single;int;3000;in;;;
+Vympel500;ArchDay;MT23;0 4000;ArchDay;int;86400000;in;;;
+Vympel500;ArchHour;MT23;0 4000;ArchHour;int;3600000;in;;;
+Vympel500;ArchAlarm;MT23;0 4000;ArchAlarm;int;3600000;in;;;
+Vympel500;ArchInterfer;MT23;0 4000;ArchInterfer;int;1800000;in;;;

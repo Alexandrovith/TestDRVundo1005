@@ -1,0 +1,10 @@
+
+[29.12.2017 14:55:10.361]	Открытие СОМ-порта: Порт 'COM1' не существует.
+   в System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   в System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   в System.IO.Ports.SerialPort.Open()
+   в TestDRVtransGas.CComPort.CreatePort()
+[29.12.2017 14:56:13.612]	[COM] Команда 0	[10 3 0 46 0 23 E6 87 ]
+[29.12.2017 14:56:51.112]	[COM] Команда 0	[10 3 0 46 0 23 E6 87 ]
+[29.12.2017 14:58:32.4]	[COM] Команда 0	[10 3 0 46 0 23 E6 87 ]
+[29.12.2017 14:59:25.333]	[COM] Команда 0	[1 2 3 4 ]

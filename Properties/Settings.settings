@@ -1,0 +1,210 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TestDRVtransGas.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="sFileParam" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Params.prmd</Value>
+    </Setting>
+    <Setting Name="sFileDev" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Devices.devd</Value>
+    </Setting>
+    <Setting Name="dmTimeResp" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="iLeftForm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="asDataWritePar" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0 2</Value>
+    </Setting>
+    <Setting Name="asParameterName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TempParName;DevDTSet</Value>
+    </Setting>
+    <Setting Name="iDataWritePar" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="iParameterName" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="asData" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0 2;0 481 487;0 4</Value>
+    </Setting>
+    <Setting Name="iData" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="iTypeData" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="asDeviceStat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ERZ2004</Value>
+    </Setting>
+    <Setting Name="asDeviceWr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ERZ2004</Value>
+    </Setting>
+    <Setting Name="iHeightForm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="iWidthForm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1002</Value>
+    </Setting>
+    <Setting Name="iTopForm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="DTArchDay" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DTArchHour" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DTInterfer" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DTAlarm" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asIPs" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">502</Value>
+    </Setting>
+    <Setting Name="asIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1;localhost;192.168.226.1;192.168.111.1</Value>
+    </Setting>
+    <Setting Name="iPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">503</Value>
+    </Setting>
+    <Setting Name="iTCPdeviceCurr" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="iIntervalScan" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="iReverceValWr" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="asCOMport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM3</Value>
+    </Setting>
+    <Setting Name="asBaud" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9600</Value>
+    </Setting>
+    <Setting Name="dTimeoutBetwen" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="mComPort" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="asBaudCom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">38400</Value>
+    </Setting>
+    <Setting Name="asIPserver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="dmSizeBufOut" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">400</Value>
+    </Setting>
+    <Setting Name="dmWriteTimeout" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="dmRepeatWrite" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="iIntervalSendFHPDev" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="iParity" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="iStopBits" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="iDataBits" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="asDirBites" Type="System.String" Scope="User">
+      <Value Profile="(Default)">прямое</Value>
+    </Setting>
+    <Setting Name="DataArToWr" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="iIDstart" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DeltaDayHour" Type="System.String" Scope="User">
+      <Value Profile="(Default)">дни</Value>
+    </Setting>
+    <Setting Name="as8n1To7e1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="b7bit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="bCalcBCC" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="bWordWrap" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="asIPactive" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.23</Value>
+    </Setting>
+    <Setting Name="asIPpassive" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.10.195.169</Value>
+    </Setting>
+    <Setting Name="asIPactiveList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.23;127.0.0.1</Value>
+    </Setting>
+    <Setting Name="asIPpassiveList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.10.195.169</Value>
+    </Setting>
+    <Setting Name="iPortPassive" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">7777</Value>
+    </Setting>
+    <Setting Name="iPortActive" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">555</Value>
+    </Setting>
+    <Setting Name="asDevExch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EK270</Value>
+    </Setting>
+    <Setting Name="asDGBite8nTo7e" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asBtToStr" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="bChDataAsHex" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="dmSiseFontTCTtoTCT" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="asIPactiveListComP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.23;127.0.0.1</Value>
+    </Setting>
+    <Setting Name="asParityTCTtoComP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asIPpassiveToComP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asStopBitsTCPtoComP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asComPortToComP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asBaudToComP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="asDataBit" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,4 @@
+FlowX;AB01 FlowX;MT3;0 2;Single;float;5000;in;;;
+FlowX;AC01 FlowX;MT3;0 4;Single;float;5000;in;;;
+FlowX;LS03 FlowX MT3;MT3;0 6;Single;int;5000;in;;;
+FlowX;HD01 FlowX;MT3;0 204;Single;int;5000;in;;;

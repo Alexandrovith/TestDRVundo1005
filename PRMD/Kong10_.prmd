@@ -1,0 +1,111 @@
+Minsk2;0 i;MT4;0 0;Single;float;500;in;;;
+Minsk2;4 i;MT4;0 4;Single;float;500;in;;;
+Minsk2;6 f;MT4;0 6;Single;float;500;in;;;
+Minsk2;236 i;MT4;0 236;Single;int;500;in;;;
+Minsk2;582 f;MT4;0 582;Single;float;500;in;;;
+Minsk2;586 f;MT4;0 586;Single;float;500;in;;;
+
+SITRANSCV;SITRANSCV;MT3;0 4;Single;float;500;in;;;
+SITRANSCV;SITRANSCV FailArch;Virtual;0 0;FailArch;float;500;in;;;
+KP10;KP10;MT4;0 0;Single;float;500;in;;;
+KP10;KP10 FailArch;Virtual;0 0;FailArch;float;500;in;;;
+ioLogik;FailArch;Virtual;0 0;FailArch;float;500;in;;;
+ioLogik;ioLogik;MT3;0 8;Single;float;500;in;;;
+
+ERZ2004;MetricAB01;MT3;0 20;Single;int;600;in;;;
+ERZ2004;AB01;MT3;0 6;Single;float;500;in;;;
+
+AverrageHourDay:
+
+ioLogik;AverrageHour00;MT3;0 20 0 Hour Столб;SingleArch;float;5000;in;;;
+ioLogik;AverrageDay00;Virtual;0 20 0 Day СтолбДень;SingleArch;float;5000;in;;;
+ioLogik;AverrageHour01;MT3;0 10 0 Hour Столб1;SingleArch;float;5000;in;;;
+ioLogik;AverrageDay01;Virtual;0 10 0 Day СтолбДень1;SingleArch;float;5000;in;;;
+ioLogik;AverrageDay02;Virtual;0 6 0 Day СтолбДень2;SingleArch;float;5000;in;;;
+ioLogik;AverrageHour02;MT3;0 6 0 Hour Столб2;SingleArch;float;5000;in;;;
+ioLogik;AverrageDay03;Virtual;0 8 0 Day СтолбДень3;SingleArch;float;5000;in;;;
+ioLogik;AverrageHour03;MT3;0 8 0 Hour Столб3;SingleArch;float;5000;in;;;
+KP10;AverrageDay00;Virtual;0 6 0 Day tt;SingleArch;float;5000;in;;;
+KP10;AverrageHour00;MT3;0 6 0 Hour yy;SingleArch;float;5000;in;;;
+KP10;AverrageDay01;Virtual;0 8 0 Day uu;SingleArch;float;5000;in;;;
+KP10;AverrageHour01;MT3;0 8 0 Hour ii;SingleArch;float;5000;in;;;
+
+ERZ2004;ERZ2004 ArchHour;WebArch;td th 16;ArchHour;float;40000;in;;;
+
+KP10;SystemTime;Virtual;0 10;Single;int;5000;in;;;
+
+SitransCV;SitransCV;MT3;0 8;Single;float;500;in;;;
+SitransCV;SitransCV FailArch;Virtual;0 0;FailArch;float;500;in;;;
+SitransCV;DevDate;MT3;0 10;Single;DateAsYMD;500;in;;;
+ioLogik;ioLogik2;MT1;0 4145;Single;byte;600;in;;;
+ioLogik;ioLogik3;MT1;0 4153;Single;byte;500;in;;;
+ERZ2004;ERZ2004 MT3;MT3;0 10;Single;int;500;in;;;
+ERZ2004;ERZ2004;MT3;0 14;Single;int;500;in;;;
+ERZ2004;Alarm_Code01;Virtual;0 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;DateTimeA01;Virtual;0 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;Alarm_Code02;Virtual;1 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;DateTimeA02;Virtual;1 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;Alarm_Code03;Virtual;2 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;DateTimeA03;Virtual;2 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;Alarm_Code04;Virtual;3 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;DateTimeA04;Virtual;3 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;Alarm_Code05;Virtual;4 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;DateTimeA05;Virtual;4 5 ArchAlarm;Single;int;500;in;;;
+ERZ2004;ERZ2004 ArchAlarm;WebArch;td th 16;ArchAlarm;float;400000;in;;;
+ERZ2004;CC05;WebPar;td th 16;Single;string;500;in;kMod;РњРµС‚РѕРґ РїРѕРґСЃС‡РµС‚Р°;
+KP10;KP10;MT4;0 0;Single;int;500;in;;;
+KP10;KP10 FailArch;Virtual;0 0;FailArch;float;500;in;;;
+ioLogik;FailArch;Virtual;0 0;FailArch;float;500;in;;;
+ioLogik;ioLogik;MT3;0 8;Single;float;500;in;;;
+ERZ2004;WPI;MT3;0 10;Single;double;500;in;;;
+ERZ2004;WPF;MT3;0 0;Single;float;500;in;;;
+KP10;SystemTime;Virtual;0 10;Single;int;500;in;;;
+ioLogik;Log00;MT4;0 20 3 Hour;SingleArch;float;5000;in;;;
+ioLogik;logD00;Virtual;0 20 3 Day;SingleArch;float;5000;in;;;
+KP10;KP00;MT4;0 4 0 Hour;SingleArch;float;5000;in;;;
+KP10;KPD00;Virtual;0 4 0 Day;SingleArch;float;5000;in;;;
+KP10;KP201;MT4;0 8 0 Hour;SingleArch;float;5000;in;;;
+KP10;KPD201;Virtual;0 8 0 Day;SingleArch;float;5000;in;;;
+KP10;KP301;MT4;0 8 0 Hour;SingleArch;float;5000;in;;;
+KP10;KPD301;Virtual;0 8 0 Day;SingleArch;float;5000;in;;;
+SitransCV;SitransCV 17;MT3;0 8 17;ArchHour;float;5000;in;;;
+SitransCV;SitransCV17;MT3;0 8 17;ArchDay;float;5000;in;;;
+
+ERZ2004;ERZ2004 ArchInterfer;WebArch;td th 16;ArchInterfer;float;20000;in;;;
+ERZ2004;ERZ2004 ArchHour;WebArch;td th 16;ArchHour;float;20000;in;;;
+ERZ2004;ERZ2004 ArchAlarm;WebArch;td th 16;ArchAlarm;float;20000;in;;;
+
+ioLogik;Log00 14;MT4;0 20 14 Hour;SingleArch;float;5000;in;;;
+ioLogik;logD00 14;Virtual;0 20 14 Day;SingleArch;float;5000;in;;;
+KP10;KP00 15;MT4;0 4 15 Hour;SingleArch;float;5000;in;;;
+KP10;KPD00 15;Virtual;0 4 15 Day;SingleArch;float;5000;in;;;
+KP10;KP201 16;MT4;0 8 16 Hour;SingleArch;float;5000;in;;;
+KP10;KPD201 16;Virtual;0 8 16 Day;SingleArch;float;5000;in;;;
+KP10;KP301 17;MT4;0 8 17 Hour;SingleArch;float;5000;in;;;
+KP10;KPD301 17;Virtual;0 8 17 Day;SingleArch;float;5000;in;;;
+SitransCV;SitransCV_8;MT3;0 8 4;ArchHour;float;5000;in;;;
+SitransCV;SitransCV_8;MT3;0 8 4;ArchDay;float;5000;in;;;
+SitransCV;SitransCV_16;MT3;0 16 4;ArchHour;float;5000;in;;;
+SitransCV;SitransCV_16;MT3;0 16 4;ArchDay;float;5000;in;;;
+SitransCV;DateTime1970;MT3;0 60;Single;DateTimeAsYMDHMS12;5000;in;;;
+MAG1;ArchInterMAG;MT107;0 107;ArchInterfer;int;10000;in;;;
+MAG1;ArchHourMAG;MT16;0 152 76;ArchHour;int;20000;in;;;
+MAG1;ArchDayMAG;MT3;0 152 76;ArchDay;int;3600000;in;;;
+
+IRGA;ArchInterIRGA2;Archive;ArchInterfer;ArchInterfer;int;3600000;in;;;
+IRGA;ArchHour;Archive;ArchHour;ArchHour;int;3600000;in;;;
+IRGA;ArchDay;Archive;ArchDay;ArchDay;int;3600000;in;;;
+IRGA;RdDate;IRGA;RdDate;Single;DateTime1970;15000;in;;;
+IRGA;Pres;IRGA;RdФХП;Single;float;15000;in;;;
+IRGA;Rc;IRGA;RdФХП;Single;float;15000;in;;;
+IRGA;CO2;IRGA;RdФХП;Single;float;15000;in;;;
+IRGA;N2;IRGA;RdФХП;Single;float;15000;in;;;
+IRGA;P;IRGA;CurrVals;Single;float;15000;in;;;
+IRGA;T;IRGA;CurrVals;Single;float;15000;in;;;
+IRGA;Qp;IRGA;CurrVals;Single;float;15000;in;;;
+IRGA;Vp;IRGA;CurrVals;Single;float;15000;in;;;
+IRGA;Qc;IRGA;CurrVals;Single;float;15000;in;;;
+IRGA;Vc;IRGA;CurrVals;Single;float;15000;in;;;
+IRGA;ContractHour;IRGA;RdContractHour;Single;byte;15000;in;;;
+IRGA;VpE;IRGA;VpE;Single;float;15000;in;;;
+IRGA;VcE;IRGA;VcE;Single;float;15000;in;;;

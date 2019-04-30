@@ -1,0 +1,204 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using AXONIM.ScanParamOfDevicves;
+
+namespace TestDRVtransGas
+{
+	public partial class CTestExch : UserControl
+	{
+		public enum EDevice { ИРГА2, }
+		CExchange Прибор;
+
+		public delegate void DOutMess (string asMess, string asDelimiter);
+		public DOutMess OutMess;
+
+		public CTestExch (object TheControl)
+		{
+			InitializeComponent ();
+			Parent = (Control)TheControl;
+
+			CBDevice.Items.AddRange (Enum.GetNames (typeof (EDevice)));
+			CBDevice.SelectedIndex = 0;
+
+			CBIP.Items.AddRange (Properties.Settings.Default.asIPs.Split (';'));
+			if (Properties.Settings.Default.asIP.Length > 7)
+			{
+				CBIP.SelectedIndex = CBIP.FindString (Properties.Settings.Default.asIP);
+			}
+			else
+			{
+				if (CBIP.Items.Count > 0)
+					CBIP.SelectedIndex = 0;
+			}
+			TBPort.Text = Properties.Settings.Default.asPort;
+			TBCommand.Text = Properties.Settings.Default.asCommand;
+
+			OutMess = new DOutMess (Inv_OutMess);
+			//ReSize ();
+		}
+		//_____________________________________________________________
+		private void TBCommand_KeyPress (object sender, KeyPressEventArgs e)
+		{
+			if (Control.ModifierKeys == Keys.Control && e.KeyChar == (char)Keys.Return)
+			{
+				BRequest_Click (sender, e);
+			}
+		}
+		//_____________________________________________________________
+
+		int iPort;
+		private void BRequest_Click (object sender, EventArgs e)
+		{
+			if (int.TryParse (TBPort.Text, out iPort))
+			{
+				Properties.Settings.Default.asPort = TBPort.Text;
+				Properties.Settings.Default.asIP = CBIP.Text;
+				if (CBIP.FindString (CBIP.Text) < 0)
+				{
+					CBIP.Items.Add (CBIP.Text);
+					Properties.Settings.Default.asIPs += ";" + CBIP.Text;
+				}
+				Properties.Settings.Default.asCommand = TBCommand.Text;
+				switch ((EDevice)CBDevice.SelectedIndex)
+				{
+				case EDevice.ИРГА2: RequestIRGA2 (); break;
+				default: break;
+				}
+			}
+			else
+			{
+				MessageBox.Show ("Неправильный номер порта: [" + TBPort.Text + "]");
+			}
+		}
+		//_________________________________________________________________________
+
+		CComPort CP;
+		private void BReadCOM_Click (object sender, EventArgs e)
+		{
+			if (CP != null)
+				CP.PortClose ();
+			CP = new CComPort (this);
+			byte[] btaBuf = new byte[1];
+			btaBuf[0] = 0x6E;
+			int iCountRequest = 0;
+			byte[] btaTX = ConvStrToComm (TBCommand.Lines[iCountRequest], iCountRequest);
+			if (btaTX != null)
+				CP.SendComm (btaTX, 0, btaTX.Length);
+			else TBCommand.AppendText ("Неверная команда " + TBCommand.Lines[iCountRequest]);
+		}
+		//_________________________________________________________________________
+		private void RequestIRGA2 ()
+		{
+			if (Прибор == null)
+			{
+				Прибор = new CIRGA2 (this);
+			}
+			Прибор.BeforeRequest ();
+			if (TBCommand.Lines.Count () > 0)
+				Прибор.Request (TBCommand.Lines[0], CBIP.Text, iPort);
+			else Прибор.Request ("", CBIP.Text, iPort);
+		}
+		//_________________________________________________________________________
+		public void Closing()
+		{
+			Properties.Settings.Default.Save ();
+			BDisconn_Click (null, null);
+			BSaveFile_Click (null, null);
+		}
+		//_________________________________________________________________________
+
+		public const string asExt = ".exch";
+
+		protected string CreateNameFile ()
+		{
+			if (TBFile.Text.Length == 0)
+			{
+				string asConvDT = DateTime.Now.ToString ().Replace (':', '_');
+				return Directory.GetCurrentDirectory () + @"\" + asConvDT.Replace ('/', '_') + asExt;
+			}
+			else return Directory.GetCurrentDirectory () + @"\" + TBFile.Text + asExt;
+		}
+		//_________________________________________________________________________
+		public void Inv_OutMess (string asMess, string asDelimiter)
+		{
+			DateTime DT = DateTime.Now;
+			asMess = asDelimiter + "[" + DT.ToString () + "." + DT.Millisecond.ToString () + "] " + asMess;
+			TBListExchange.AppendText (Environment.NewLine + asMess);
+		}
+		//_________________________________________________________________________
+		public byte[] ConvStrToComm (string asCommand, int iCountRequest)
+		{
+			string[] asaComm = asCommand.Split (' ');
+			ushort usLenData;
+			if (/*Владелец.ChBInvers.Checked && */UDInverNum.Value == iCountRequest)
+				usLenData = (ushort)(asaComm.Length * 2 - UDInverShift.Value);
+			else usLenData = (ushort)asaComm.Length;
+
+			byte[] btaBufTX = new byte[usLenData];
+			int i = 0;
+			foreach (var item in asaComm)
+			{
+				if (item[0] == '\'')            // Чтение символа 
+				{
+					byte bt = (byte)item[1];
+					if (/*Владелец.ChBInvers.Checked && */UDInverNum.Value == iCountRequest &&
+							i >= (int)TModbusTCP.EResponseTCP.Func + UDInverShift.Value)
+						btaBufTX[i++] = (byte)(~bt);
+					btaBufTX[i++] = bt;
+				}
+				else
+				{
+					byte bt;
+					if (byte.TryParse (item, System.Globalization.NumberStyles.HexNumber, null as IFormatProvider, out bt))
+					{
+						if (/*Владелец.ChBInvers.Checked && */UDInverNum.Value == iCountRequest &&
+								i >= (int)TModbusTCP.EResponseTCP.Func + UDInverShift.Value)
+							btaBufTX[i++] = (byte)(~bt);
+						btaBufTX[i++] = bt;
+					}
+					else
+					{
+						MessageBox.Show ("Неверный код команды [" + asCommand + "]");
+						return null;
+					}
+				}
+			}
+			return btaBufTX;
+		}
+		//_________________________________________________________________________
+		private void BDisconn_Click (object sender, EventArgs e)
+		{
+			if (Прибор != null)
+				Прибор.Disconnect ();
+			if (CP != null)
+				CP.PortClose ();
+		}
+		//_________________________________________________________________________
+		private void BSaveFile_Click (object sender, EventArgs e)
+		{
+			if (TBListExchange.Text.Length > 2)
+			{
+				string asFile = CreateNameFile ();
+				System.IO.File.WriteAllText (asFile, TBListExchange.Text);
+				if (CBClearOut.Checked)
+					TBListExchange.Text = "";
+				if (sender != null)
+					MessageBox.Show ("Записано в файл [" + asFile + "]");
+			}
+		}
+		//_________________________________________________________________________
+		public void ReSize ()
+		{
+			Width = this.Parent.Width;
+			Height = this.Parent.Height;
+		}
+	}
+}

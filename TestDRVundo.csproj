@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A541BC4C-0F89-433D-97AE-960E34CDE97F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestDRVtransGas</RootNamespace>
+    <AssemblyName>TestDRVundoStart</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Argos Icon 12.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TCPserver\TCPdevice.cs" />
+    <Compile Include="TCPserver\DevIRGA2.cs" />
+    <Compile Include="TCPserver\DevMAG.cs" />
+    <Compile Include="TCPserver\TCPserver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCPserver\TCPserver.Designer.cs">
+      <DependentUpon>TCPserver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestEXCH\ComPort.cs" />
+    <Compile Include="TestDRVs\Devices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestDRVs\Devices.Designer.cs">
+      <DependentUpon>Devices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestEXCH\Exchange.cs" />
+    <Compile Include="TestDrvs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestDrvs.Designer.cs">
+      <DependentUpon>TestDrvs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestEXCH\IRGA2.cs" />
+    <Compile Include="TestDRVs\Params.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestDRVs\Params.Designer.cs">
+      <DependentUpon>Params.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestEXCH\RecieveMODtcp.cs" />
+    <Compile Include="TestDRVs\Serialize.cs" />
+    <Compile Include="TestEXCH\TestExch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestEXCH\TestExch.Designer.cs">
+      <DependentUpon>TestExch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestsDifferent\TestDIfferent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestsDifferent\TestDIfferent.Designer.cs">
+      <DependentUpon>TestDIfferent.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TCPserver\TCPserver.resx">
+      <DependentUpon>TCPserver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestDRVs\Devices.resx">
+      <DependentUpon>Devices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestDrvs.resx">
+      <DependentUpon>TestDrvs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestDRVs\Params.resx">
+      <DependentUpon>Params.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TestEXCH\TestExch.resx">
+      <DependentUpon>TestExch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestsDifferent\TestDIfferent.resx">
+      <DependentUpon>TestDIfferent.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="apple_IIe_on.ico" />
+    <Content Include="Argos Icon 12.ico" />
+    <None Include="Resources\call-hang_p41.png" />
+    <None Include="Resources\call-progress_p4.png" />
+    <None Include="Resources\ExitTranspar1.png" />
+    <None Include="Resources\Orange System Icon 06_p6.png" />
+    <Content Include="TestEXCH\infoIRGA2.txt" />
+    <None Include="Resources\Button - Shared_p7.png" />
+    <None Include="Resources\Connections_p6.png" />
+    <None Include="Resources\call-hang_p4.png" />
+    <Content Include="Resources\Core IP theme Icon 19_p8.png" />
+    <None Include="Resources\ExitTranspar.png" />
+    <None Include="Resources\DaBlue 2006 042_p6.png" />
+    <None Include="Resources\DaBlue 2006 047_p4.png" />
+    <Content Include="Resources\Gris&amp;GlowV1.5 Icon 19_p7.png" />
+    <None Include="Resources\hi_fi_5_p05.png" />
+    <Content Include="Resources\Log Off_p12.png" />
+    <None Include="Resources\Spell_p8.png" />
+    <None Include="Resources\save_2_p5.png" />
+    <Content Include="TestDrv.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\gas2\trunk\SCADA\DeviceInterfaces\DeviceInterfaces.csproj">
+      <Project>{d66e81ca-1c8f-46a5-becc-9d7206b9f533}</Project>
+      <Name>DeviceInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Test\Undo\BelTransGasDRV.csproj">
+      <Project>{f7c24ea3-5b42-4666-aa37-b2e60cda7a96}</Project>
+      <Name>BelTransGasDRV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Test\Undo\CONSTS\BelTransCONSTS.csproj">
+      <Project>{3e49cdd1-23c2-40cc-84c9-a46888c59e8b}</Project>
+      <Name>BelTransCONSTS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Test\Undo\ScanParamOfDevicves\ScanParamOfDevices.csproj">
+      <Project>{7b64bed5-0abb-4eb7-a634-84662383418b}</Project>
+      <Name>ScanParamOfDevices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

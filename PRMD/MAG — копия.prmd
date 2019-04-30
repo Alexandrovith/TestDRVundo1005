@@ -1,0 +1,8 @@
+MAG1;ArchDayMAG;MT3;0 152 76;ArchDay;int;86400000;in;;;
+MAG1;CO2MD;Virtual;D CO2;Single;float;5000;in;;;
+MAG1;N2MD;Virtual;D N2;Single;float;5000;in;;;
+MAG1;DensityMD;Virtual;D Density;Single;float;5000;in;;;
+MAG1;ArchHourMAG;MT3;0 152 76;ArchHour;int;3600000;in;;;
+MAG1;CO2MH;Virtual;H CO2;Single;float;5000;in;;;
+MAG1;N2MH;Virtual;H N2;Single;float;5000;in;;;
+MAG1;DensityMH;Virtual;H Density;Single;float;5000;in;;;

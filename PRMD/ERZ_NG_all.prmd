@@ -1,0 +1,60 @@
+ERZ_NG;CC05;WebPar;td th 16;Single;string;5000;in;kMod;Метод расчёта;
+ERZ_NG;EB19;WebPar;td th 16;Single;string;5000;in;gerArt;Тип устройства;
+ERZ_NG;EK08;WebPar;td th 16;Single;string;5000;in;fabrikNr;Заводской номер;
+ERZ_NG;KA14;WebPar;td th 16;Single;string;5000;in;gasHour;Расчётный час;
+ERZ_NG;AB04;WebPar;td th 16;Single;string;50000;in;drkaDim;Единица измерения;
+ERZ_NG;GB52;WebPar;td th 16;Single;string;50000;in;zwkSerNr;Серийный номер;
+ERZ_NG;GB51;WebPar;td th 16;Single;string;50000;in;zwkPrinzip;Тип счетчика;
+ERZ_NG;ArchInterfer ERZ;WebArch;body th 4;ArchInterfer;float;60000;in;;;
+ERZ_NG;ArchDay NG;WebArch;td th 16;ArchDay;float;3600000;in;;;
+ERZ_NG;ArchHour NG;WebArch;td th 16;ArchHour;float;3600000;in;;;
+ERZ_NG;Alarm NG ArchAlarm;WebArch;td th 16;ArchAlarm;float;400000;in;;;
+ERZ_NG;GG02;MT3;0 16;Single;float;5000;in;;;
+ERZ_NG;AB01;MT3;0 2;Single;float;5000;in;;;
+ERZ_NG;AC01;MT3;0 0;Single;float;5000;in;;;
+ERZ_NG;HD01;MT3;0 4;Single;float;5000;in;;;
+ERZ_NG;LT23;MT3;0 6;Single;float;5000;in;;;
+ERZ_NG;AE01;MT3;0 14;Single;float;5000;in;;;
+ERZ_NG;BB01;MT3;0 10;Single;float;5000;in;;;
+ERZ_NG;BD01;MT3;0 12;Single;float;5000;in;;;
+ERZ_NG;DateTimeAsYMDHMS;MT3;0 18;Single;DateTimeAsYMDHMS;5000;in;;;
+ERZ_NG;LT03;MT3;0 8;Single;float;5000;in;;;
+
+ERZ_NG;Alarm_Code01;Virtual;0 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;DateTimeA01;Virtual;0 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;Alarm_Code02;Virtual;1 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;DateTimeA02;Virtual;1 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;Alarm_Code03;Virtual;2 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;DateTimeA03;Virtual;2 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;Alarm_Code04;Virtual;3 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;DateTimeA04;Virtual;3 5 ArchAlarm;Single;int;500;in;;;
+ERZ_NG;Alarm_Code05;Virtual;4 5 ArchAlarm;Single;int;500;in;;;
+
+ERZ_NG;ArchHour NG;WebArch;td th 16;ArchHour;float;3600000;in;;;
+ERZ_NG;ArchDay NG;WebArch;td th 16;ArchDay;float;3600000;in;;;
+ERZ_NG;ArchInterfer NG;WebArch;body th 4;ArchInterfer;float;60000;in;;;
+ERZ_NG;Alarm NG ArchAlarm;WebArch;td th 16;ArchAlarm;float;400000;in;;;
+ERZ_NG;CC05;WebPar;td th 16;Single;string;5000;in;kMod;Метод подсчета;
+ERZ_NG;EB19;WebPar;td th 16;Single;string;5000;in;gerArt;Тип устройства;
+ERZ_NG;EK08;WebPar;td th 16;Single;string;5000;in;fabrikNr;Заводской номер;
+ERZ_NG;KA14;WebPar;td th 16;Single;string;5000;in;gasHour;Расчётный час;
+ERZ_NG;AB04;WebPar;td th 16;Single;string;50000;in;drkaDim;Единица измерения;
+ERZ_NG;GB52;WebPar;td th 16;Single;string;50000;in;zwkSerNr;Серийный номер;
+ERZ_NG;GB51;WebPar;td th 16;Single;string;50000;in;zwkPrinzip;Тип счетчика;
+ERZ_NG;ArchDay ERZ;WebArch;td th 16;ArchDay;float;3600000;in;;;
+ERZ_NG;ArchInterfer ERZ;WebArch;body th 4;ArchInterfer;float;60000;in;;;
+ERZ_NG;ArchHour ERZ_NG;WebArch;td th 16;ArchHour;float;3600000;in;;;
+даумана 23 63
+
+ERZ_NG;ArchHour;WebArch;td th 16;ArchHour;float;3600000;in;;;
+ERZ_NG;AB01;MT3;0 2;Single;float;5000;in;;;
+ERZ_NG;AC01;MT3;0 5206;Single;float;5000;in;;;
+ERZ_NG;LS03 MT3;MT3;0 6;Single;int;5000;in;;;
+ERZ_NG;HD01;MT3;0 204;Single;int;5000;in;;;
+ERZ_NG;LT23;MT3;0 5222;Single;float;5000;in;;;
+ERZ_NG;LB01;MT3;0 34;Single;float;5000;in;;;
+ERZ_NG;AE01;MT3;0 5210;Single;float;5000;in;;;
+ERZ_NG;BB01;MT3;0 5216;Single;float;5000;in;;;
+ERZ_NG;BD01;MT3;0 5218;Single;float;5000;in;;;
+ERZ_NG;BC01;MT3;0 5220;Single;float;5000;in;;;
+
