@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelTransCONSTS", "..\..\gas\trunk\SCADA\gasscada\Drivers\BelTransGasDRV\CONSTS\BelTransCONSTS.csproj", "{3E49CDD1-23C2-40CC-84C9-A46888C59E8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelTransCONSTS", "..\..\gas\SCADA\gasscada\Drivers\BelTransGasDRV\CONSTS\BelTransCONSTS.csproj", "{3E49CDD1-23C2-40CC-84C9-A46888C59E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanParamOfDevices", "..\..\gas\trunk\SCADA\gasscada\Drivers\BelTransGasDRV\ScanParamOfDevicves\ScanParamOfDevices.csproj", "{E3F0AF70-EB16-4B9A-9E19-93FB4DACCD03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanParamOfDevices", "..\..\gas\SCADA\gasscada\Drivers\BelTransGasDRV\ScanParamOfDevicves\ScanParamOfDevices.csproj", "{E3F0AF70-EB16-4B9A-9E19-93FB4DACCD03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelTransGasDRV", "..\..\gas\trunk\SCADA\gasscada\Drivers\BelTransGasDRV\BelTransGasDRV.csproj", "{F7C24EA3-5B42-4666-AA37-B2E60CDA7A96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelTransGasDRV", "..\..\gas\SCADA\gasscada\Drivers\BelTransGasDRV\BelTransGasDRV.csproj", "{F7C24EA3-5B42-4666-AA37-B2E60CDA7A96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDRV", "TestDRV.csproj", "{A541BC4C-0F89-433D-97AE-960E34CDE97F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceInterfaces", "..\..\gas\trunk\SCADA\SCADA\DeviceInterfaces\DeviceInterfaces.csproj", "{D66E81CA-1C8F-46A5-BECC-9D7206B9F533}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceInterfaces", "..\..\gas\SCADA\SCADA\DeviceInterfaces\DeviceInterfaces.csproj", "{D66E81CA-1C8F-46A5-BECC-9D7206B9F533}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpListener", "..\TcpListener\TcpListener.csproj", "{9E457B4B-F7E7-438E-9095-AD831A5D49C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPclient", "..\TCPclient\TCPclient.csproj", "{E1637C13-CD2F-44EB-A392-24DADD35E63E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RmgPriborDrv", "..\..\gas\trunk\SCADA\gasscada\Drivers\RmgPriborDrv\RmgPriborDrv.vcxproj", "{9AC3849B-783D-45A6-8954-1CD79A4E8928}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RmgPriborDrv", "..\..\gas\SCADA\gasscada\Drivers\RmgPriborDrv\RmgPriborDrv.vcxproj", "{9AC3849B-783D-45A6-8954-1CD79A4E8928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
