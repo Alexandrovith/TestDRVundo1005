@@ -63,6 +63,26 @@ namespace TestDRVtransGas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap books_preferences {
+            get {
+                object obj = ResourceManager.GetObject("books_preferences", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap box_out {
+            get {
+                object obj = ResourceManager.GetObject("box_out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Button___Shared_p7 {
             get {
                 object obj = ResourceManager.GetObject("Button - Shared_p7", resourceCulture);
@@ -136,6 +156,16 @@ namespace TestDRVtransGas.Properties {
         internal static System.Drawing.Bitmap Cut_p7 {
             get {
                 object obj = ResourceManager.GetObject("Cut_p7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DaBlue_2006_042_p5 {
+            get {
+                object obj = ResourceManager.GetObject("DaBlue 2006 042_p5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

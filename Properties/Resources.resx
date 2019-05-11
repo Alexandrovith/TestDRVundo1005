@@ -127,14 +127,26 @@
   <data name="Gris_GlowV1_5_Icon_19_p7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gris&amp;GlowV1.5 Icon 19_p7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="save_2_p5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save_2_p5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DaBlue 2006 047_p4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DaBlue 2006 047_p4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Core IP theme Icon 19_p8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Core IP theme Icon 19_p8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cpu_run_p6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cpu_run_p6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Core IP theme Icon 19_p8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Core IP theme Icon 19_p8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon 06_p6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon 06_p6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="books_preferences" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\books_preferences.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_p7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cut_p7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="call-progress_p4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\call-progress_p4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,28 +163,25 @@
   <data name="hi_fi_5_p05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hi_fi_5_p05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ExitTranspar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ExitTranspar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DaBlue 2006 047_p5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DaBlue 2006 047_p5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Folder - Desktop_p7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Folder - Desktop_p7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Connections_p6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Connections_p6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon 06_p6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon 06_p6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ExitTranspar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExitTranspar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Spell_p8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Spell_p8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save_2_p5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_2_p5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DaBlue 2006 047_p5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DaBlue 2006 047_p5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cut_p7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cut_p7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DaBlue 2006 042_p5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DaBlue 2006 042_p5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="box_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

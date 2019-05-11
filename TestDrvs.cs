@@ -28,6 +28,7 @@ using AXONIM.ScanParamOfDevicves;
 using AXONIM.CONSTS;
 using TestDRVtransGas.TCPtoTCP;
 using TestDRVtransGas.TCPtoComPort;
+using TestDRVtransGas.ExtractZip;
 
 namespace TestDRVtransGas
 {
@@ -1016,6 +1017,30 @@ namespace TestDRVtransGas
 			asInitDev = FindPair[CONST.DEV_SETUPS.Name.ToString ()]/* + "," + FindPair[CONST.DEV_SETUPS.UrlSingleParam.ToString ()]*/;
 			DRV.StopStartDev (asInitDev, ChStopStartDev.Checked);
 		}
+		//_________________________________________________________________________
+
+		public CExtractZip Zip;
+
+		private void button1_Click (object sender, EventArgs e)
+		{
+			if (Zip == null)
+				Zip = new CExtractZip (this);
+			else Zip.Focus ();
+			Zip.Show ();
+		}
+		//.........................................................................
+		private void PAddingPanel_MouseEnter (object sender, EventArgs e)
+		{
+			PAddingPanel.Width = 400;
+			PAddingPanel.Height = 260;
+		}
+		//.........................................................................
+		private void PAddingPanel_MouseLeave (object sender, EventArgs e)
+		{
+			PAddingPanel.Width = 244;
+			PAddingPanel.Height = 23;
+		}
+
 		//_________________________________________________________________________
 		private void CBErrors_MouseEnter (object sender, EventArgs e)
 		{

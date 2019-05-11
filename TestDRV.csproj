@@ -113,6 +113,12 @@
     <Compile Include="COMserver\COMserver.Designer.cs">
       <DependentUpon>COMserver.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtractZip\ExtractZip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtractZip\ExtractZip.Designer.cs">
+      <DependentUpon>ExtractZip.cs</DependentUpon>
+    </Compile>
     <Compile Include="IOutLog.cs" />
     <Compile Include="TCPserver\TCPtoComPort\AccumRecieve.cs" />
     <Compile Include="TCPserver\TCPtoComPort\RMG_Pass.cs" />
@@ -195,6 +201,9 @@
     </Compile>
     <EmbeddedResource Include="COMserver\COMserver.resx">
       <DependentUpon>COMserver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtractZip\ExtractZip.resx">
+      <DependentUpon>ExtractZip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TCPserver\TCPemulator.resx">
       <DependentUpon>TCPemulator.cs</DependentUpon>
@@ -281,6 +290,9 @@
     <None Include="Resources\cpu_run_p6.png" />
     <None Include="Resources\cpu_stop_p6.png" />
     <None Include="Resources\Cut_p7.png" />
+    <None Include="Resources\books_preferences.png" />
+    <None Include="Resources\DaBlue 2006 042_p5.png" />
+    <None Include="Resources\box_out.png" />
     <Content Include="TestEXCH\infoIRGA2.txt" />
     <None Include="Resources\Button - Shared_p7.png" />
     <None Include="Resources\Connections_p6.png" />

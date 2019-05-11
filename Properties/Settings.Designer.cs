@@ -834,5 +834,53 @@ namespace TestDRVtransGas.Properties {
                 this["asDataBit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string asZipDirs {
+            get {
+                return ((string)(this["asZipDirs"]));
+            }
+            set {
+                this["asZipDirs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string asZipDirsExtr {
+            get {
+                return ((string)(this["asZipDirsExtr"]));
+            }
+            set {
+                this["asZipDirsExtr"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string asZipDir {
+            get {
+                return ((string)(this["asZipDir"]));
+            }
+            set {
+                this["asZipDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string asZipDirExtr {
+            get {
+                return ((string)(this["asZipDirExtr"]));
+            }
+            set {
+                this["asZipDirExtr"] = value;
+            }
+        }
     }
 }

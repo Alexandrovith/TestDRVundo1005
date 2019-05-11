@@ -34,6 +34,8 @@
 			this.TScanParam = new System.Windows.Forms.Timer(this.components);
 			this.TCTestDRV = new System.Windows.Forms.TabControl();
 			this.TPParametersScan = new System.Windows.Forms.TabPage();
+			this.ChStopStartDev = new System.Windows.Forms.CheckBox();
+			this.BStopStartDev = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.BCOMserver = new System.Windows.Forms.Button();
 			this.BTCPserver = new System.Windows.Forms.Button();
@@ -105,8 +107,9 @@
 			this.TPTCPtoComPort = new System.Windows.Forms.TabPage();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.IL48 = new System.Windows.Forms.ImageList(this.components);
-			this.BStopStartDev = new System.Windows.Forms.Button();
-			this.ChStopStartDev = new System.Windows.Forms.CheckBox();
+			this.PanelAdd = new System.Windows.Forms.Panel();
+			this.BZipExtr = new System.Windows.Forms.Button();
+			this.PAddingPanel = new System.Windows.Forms.Panel();
 			label2 = new System.Windows.Forms.Label();
 			this.TCTestDRV.SuspendLayout();
 			this.TPParametersScan.SuspendLayout();
@@ -121,6 +124,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDIntervalScan)).BeginInit();
 			this.TPDevices.SuspendLayout();
 			this.TPParams.SuspendLayout();
+			this.PanelAdd.SuspendLayout();
+			this.PAddingPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label2
@@ -162,8 +167,7 @@
 			// TPParametersScan
 			// 
 			this.TPParametersScan.BackColor = System.Drawing.Color.Linen;
-			this.TPParametersScan.Controls.Add(this.ChStopStartDev);
-			this.TPParametersScan.Controls.Add(this.BStopStartDev);
+			this.TPParametersScan.Controls.Add(this.PAddingPanel);
 			this.TPParametersScan.Controls.Add(this.panel4);
 			this.TPParametersScan.Controls.Add(this.groupBox1);
 			this.TPParametersScan.Controls.Add(this.LVersion);
@@ -209,6 +213,30 @@
 			this.TPParametersScan.Size = new System.Drawing.Size(1010, 577);
 			this.TPParametersScan.TabIndex = 0;
 			this.TPParametersScan.Text = " Опрос приборов ";
+			// 
+			// ChStopStartDev
+			// 
+			this.ChStopStartDev.AutoSize = true;
+			this.ChStopStartDev.Checked = true;
+			this.ChStopStartDev.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.ChStopStartDev.Location = new System.Drawing.Point(161, 25);
+			this.ChStopStartDev.Name = "ChStopStartDev";
+			this.ChStopStartDev.Size = new System.Drawing.Size(95, 19);
+			this.ChStopStartDev.TabIndex = 103;
+			this.ChStopStartDev.Text = "Стоп обмен";
+			this.ChStopStartDev.UseVisualStyleBackColor = true;
+			// 
+			// BStopStartDev
+			// 
+			this.BStopStartDev.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BStopStartDev.Location = new System.Drawing.Point(24, 16);
+			this.BStopStartDev.Name = "BStopStartDev";
+			this.BStopStartDev.Size = new System.Drawing.Size(128, 33);
+			this.BStopStartDev.TabIndex = 102;
+			this.BStopStartDev.Text = "Stop dev";
+			this.toolTip1.SetToolTip(this.BStopStartDev, "Наименование прибора - ниже (в Прибор)");
+			this.BStopStartDev.UseVisualStyleBackColor = true;
+			this.BStopStartDev.Click += new System.EventHandler(this.BStopStartDev_Click);
 			// 
 			// panel4
 			// 
@@ -1108,29 +1136,42 @@
 			this.IL48.TransparentColor = System.Drawing.Color.Transparent;
 			this.IL48.Images.SetKeyName(0, "Public_p6.png");
 			// 
-			// BStopStartDev
+			// PanelAdd
 			// 
-			this.BStopStartDev.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.BStopStartDev.Location = new System.Drawing.Point(428, 4);
-			this.BStopStartDev.Name = "BStopStartDev";
-			this.BStopStartDev.Size = new System.Drawing.Size(128, 23);
-			this.BStopStartDev.TabIndex = 102;
-			this.BStopStartDev.Text = "Stop dev";
-			this.toolTip1.SetToolTip(this.BStopStartDev, "Наименование прибора - ниже (в Прибор)");
-			this.BStopStartDev.UseVisualStyleBackColor = true;
-			this.BStopStartDev.Click += new System.EventHandler(this.BStopStartDev_Click);
+			this.PanelAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.PanelAdd.BackColor = System.Drawing.Color.PeachPuff;
+			this.PanelAdd.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.PanelAdd.Controls.Add(this.ChStopStartDev);
+			this.PanelAdd.Controls.Add(this.BZipExtr);
+			this.PanelAdd.Controls.Add(this.BStopStartDev);
+			this.PanelAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.PanelAdd.Location = new System.Drawing.Point(11, 0);
+			this.PanelAdd.Name = "PanelAdd";
+			this.PanelAdd.Size = new System.Drawing.Size(223, 24);
+			this.PanelAdd.TabIndex = 0;
+			this.PanelAdd.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseEnter);
 			// 
-			// ChStopStartDev
+			// BZipExtr
 			// 
-			this.ChStopStartDev.AutoSize = true;
-			this.ChStopStartDev.Checked = true;
-			this.ChStopStartDev.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.ChStopStartDev.Location = new System.Drawing.Point(560, 8);
-			this.ChStopStartDev.Name = "ChStopStartDev";
-			this.ChStopStartDev.Size = new System.Drawing.Size(85, 17);
-			this.ChStopStartDev.TabIndex = 103;
-			this.ChStopStartDev.Text = "Стоп обмен";
-			this.ChStopStartDev.UseVisualStyleBackColor = true;
+			this.BZipExtr.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BZipExtr.Location = new System.Drawing.Point(24, 61);
+			this.BZipExtr.Name = "BZipExtr";
+			this.BZipExtr.Size = new System.Drawing.Size(128, 33);
+			this.BZipExtr.TabIndex = 102;
+			this.BZipExtr.Text = "Извлечь zip";
+			this.BZipExtr.UseVisualStyleBackColor = true;
+			this.BZipExtr.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// PAddingPanel
+			// 
+			this.PAddingPanel.Controls.Add(this.PanelAdd);
+			this.PAddingPanel.Location = new System.Drawing.Point(413, 0);
+			this.PAddingPanel.Name = "PAddingPanel";
+			this.PAddingPanel.Size = new System.Drawing.Size(243, 27);
+			this.PAddingPanel.TabIndex = 0;
+			this.PAddingPanel.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseLeave);
 			// 
 			// FTestDrvs
 			// 
@@ -1162,6 +1203,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDIntervalScan)).EndInit();
 			this.TPDevices.ResumeLayout(false);
 			this.TPParams.ResumeLayout(false);
+			this.PanelAdd.ResumeLayout(false);
+			this.PanelAdd.PerformLayout();
+			this.PAddingPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -1244,6 +1288,9 @@
 		private System.Windows.Forms.TabPage TPTCPtoComPort;
 		private System.Windows.Forms.CheckBox ChStopStartDev;
 		private System.Windows.Forms.Button BStopStartDev;
+		private System.Windows.Forms.Panel PanelAdd;
+		private System.Windows.Forms.Button BZipExtr;
+		private System.Windows.Forms.Panel PAddingPanel;
 	}
 }
 
