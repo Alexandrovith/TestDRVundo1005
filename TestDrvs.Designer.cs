@@ -34,7 +34,10 @@
 			this.TScanParam = new System.Windows.Forms.Timer(this.components);
 			this.TCTestDRV = new System.Windows.Forms.TabControl();
 			this.TPParametersScan = new System.Windows.Forms.TabPage();
+			this.PAddingPanel = new System.Windows.Forms.Panel();
+			this.PanelAdd = new System.Windows.Forms.Panel();
 			this.ChStopStartDev = new System.Windows.Forms.CheckBox();
+			this.BZipExtr = new System.Windows.Forms.Button();
 			this.BStopStartDev = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.BCOMserver = new System.Windows.Forms.Button();
@@ -107,12 +110,11 @@
 			this.TPTCPtoComPort = new System.Windows.Forms.TabPage();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.IL48 = new System.Windows.Forms.ImageList(this.components);
-			this.PanelAdd = new System.Windows.Forms.Panel();
-			this.BZipExtr = new System.Windows.Forms.Button();
-			this.PAddingPanel = new System.Windows.Forms.Panel();
 			label2 = new System.Windows.Forms.Label();
 			this.TCTestDRV.SuspendLayout();
 			this.TPParametersScan.SuspendLayout();
+			this.PAddingPanel.SuspendLayout();
+			this.PanelAdd.SuspendLayout();
 			this.panel4.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NUDIntervalSendFHPDev)).BeginInit();
@@ -124,8 +126,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDIntervalScan)).BeginInit();
 			this.TPDevices.SuspendLayout();
 			this.TPParams.SuspendLayout();
-			this.PanelAdd.SuspendLayout();
-			this.PAddingPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label2
@@ -214,6 +214,32 @@
 			this.TPParametersScan.TabIndex = 0;
 			this.TPParametersScan.Text = " Опрос приборов ";
 			// 
+			// PAddingPanel
+			// 
+			this.PAddingPanel.Controls.Add(this.PanelAdd);
+			this.PAddingPanel.Location = new System.Drawing.Point(416, 0);
+			this.PAddingPanel.Name = "PAddingPanel";
+			this.PAddingPanel.Size = new System.Drawing.Size(243, 27);
+			this.PAddingPanel.TabIndex = 0;
+			this.PAddingPanel.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseLeave);
+			// 
+			// PanelAdd
+			// 
+			this.PanelAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.PanelAdd.BackColor = System.Drawing.Color.PeachPuff;
+			this.PanelAdd.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.PanelAdd.Controls.Add(this.ChStopStartDev);
+			this.PanelAdd.Controls.Add(this.BZipExtr);
+			this.PanelAdd.Controls.Add(this.BStopStartDev);
+			this.PanelAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.PanelAdd.Location = new System.Drawing.Point(11, 0);
+			this.PanelAdd.Name = "PanelAdd";
+			this.PanelAdd.Size = new System.Drawing.Size(223, 24);
+			this.PanelAdd.TabIndex = 0;
+			this.PanelAdd.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseEnter);
+			// 
 			// ChStopStartDev
 			// 
 			this.ChStopStartDev.AutoSize = true;
@@ -225,6 +251,17 @@
 			this.ChStopStartDev.TabIndex = 103;
 			this.ChStopStartDev.Text = "Стоп обмен";
 			this.ChStopStartDev.UseVisualStyleBackColor = true;
+			// 
+			// BZipExtr
+			// 
+			this.BZipExtr.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BZipExtr.Location = new System.Drawing.Point(24, 61);
+			this.BZipExtr.Name = "BZipExtr";
+			this.BZipExtr.Size = new System.Drawing.Size(128, 33);
+			this.BZipExtr.TabIndex = 102;
+			this.BZipExtr.Text = "Извлечь zip";
+			this.BZipExtr.UseVisualStyleBackColor = true;
+			this.BZipExtr.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// BStopStartDev
 			// 
@@ -1136,43 +1173,6 @@
 			this.IL48.TransparentColor = System.Drawing.Color.Transparent;
 			this.IL48.Images.SetKeyName(0, "Public_p6.png");
 			// 
-			// PanelAdd
-			// 
-			this.PanelAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.PanelAdd.BackColor = System.Drawing.Color.PeachPuff;
-			this.PanelAdd.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.PanelAdd.Controls.Add(this.ChStopStartDev);
-			this.PanelAdd.Controls.Add(this.BZipExtr);
-			this.PanelAdd.Controls.Add(this.BStopStartDev);
-			this.PanelAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.PanelAdd.Location = new System.Drawing.Point(11, 0);
-			this.PanelAdd.Name = "PanelAdd";
-			this.PanelAdd.Size = new System.Drawing.Size(223, 24);
-			this.PanelAdd.TabIndex = 0;
-			this.PanelAdd.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseEnter);
-			// 
-			// BZipExtr
-			// 
-			this.BZipExtr.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.BZipExtr.Location = new System.Drawing.Point(24, 61);
-			this.BZipExtr.Name = "BZipExtr";
-			this.BZipExtr.Size = new System.Drawing.Size(128, 33);
-			this.BZipExtr.TabIndex = 102;
-			this.BZipExtr.Text = "Извлечь zip";
-			this.BZipExtr.UseVisualStyleBackColor = true;
-			this.BZipExtr.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// PAddingPanel
-			// 
-			this.PAddingPanel.Controls.Add(this.PanelAdd);
-			this.PAddingPanel.Location = new System.Drawing.Point(413, 0);
-			this.PAddingPanel.Name = "PAddingPanel";
-			this.PAddingPanel.Size = new System.Drawing.Size(243, 27);
-			this.PAddingPanel.TabIndex = 0;
-			this.PAddingPanel.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseLeave);
-			// 
 			// FTestDrvs
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1189,6 +1189,9 @@
 			this.TCTestDRV.ResumeLayout(false);
 			this.TPParametersScan.ResumeLayout(false);
 			this.TPParametersScan.PerformLayout();
+			this.PAddingPanel.ResumeLayout(false);
+			this.PanelAdd.ResumeLayout(false);
+			this.PanelAdd.PerformLayout();
 			this.panel4.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.NUDIntervalSendFHPDev)).EndInit();
@@ -1203,9 +1206,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.UDIntervalScan)).EndInit();
 			this.TPDevices.ResumeLayout(false);
 			this.TPParams.ResumeLayout(false);
-			this.PanelAdd.ResumeLayout(false);
-			this.PanelAdd.PerformLayout();
-			this.PAddingPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }

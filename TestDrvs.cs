@@ -783,7 +783,7 @@ namespace TestDRVtransGas
 			{
 				dynamic oVal;
 				TYPE TheType = (TYPE)Enum.Parse (typeof (TYPE), CBTypeData.Text);
-				if (TheType != TYPE.DateTimeAsYMDHMS && TheType != TYPE.DateTime1970)
+				if (TheType != TYPE.DateTimeAsYMDHMS && TheType != TYPE.DateTimeAsHMSMDY12 && TheType != TYPE.DateTime1970)
 				{
 					oVal = Global.StrToType (asVal, TheType);
 					if (oVal.GetType () is string)// .ToString ().Equals ("System.String"))// TODO RESTORE?
