@@ -455,7 +455,7 @@ namespace TestDRVtransGas.TCPserver
 			case "IRGA2": CurrDev = new CDevIRGA2 (this); break;
 			case "MAG": CurrDev = new CDevMAG (this); break;
 			case "Vympel500": CurrDev = new CDevVympel (this); break;
-			case "UFG_F": CurrDev = new CDevUFG_F (this); break;
+			case "UFGF": CurrDev = new CDevUFG_F (this); break;
 			case "EK270": CurrDev = new CDevEK270 (this); break;
 			default: CurrDev = new CTCPdevice (this); break;
 			}

@@ -1,8 +1,19 @@
-﻿using System;
+﻿///@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+///~~~~~~~~~	Проект:			Тест драйверов приборов и др. утилиты
+///~~~~~~~~~	Прибор:			Все приборы
+///~~~~~~~~~	Модуль:			Эмулятор прибора на Сом-порту  
+///~~~~~~~~~	Разработка:	Демешкевич С.А.
+///~~~~~~~~~	Дата:				23.01.2019
+
+///@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +24,27 @@ namespace TestDRVtransGas.COMserver
 {
 	public partial class FCOMserver : Form
 	{
+		enum EDevs { Superflo };
+
 		COMPort ComPort;
 		CTrace Log;
+
+		COMPort.DHandlingRecieve DHandlingRecieve;
+		Color ColorCBPort;
+
+		//wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+
 		public FCOMserver (Form own)
 		{
 			InitializeComponent ();
 			Owner = own;
 			ColorCBPort = CBPort.BackColor;
 			CBBaud.SelectedIndex = CBBaud.FindString (Properties.Settings.Default.asBaud);
-			CBPort.Items.AddRange (COMPort.GetPortNames ());
+			CBPort.Items.AddRange (SerialPort.GetPortNames ());
 			CBPort.SelectedIndex = CBPort.FindString (Properties.Settings.Default.asCOMport);
+			CBDevice.Items.AddRange (Enum.GetNames (typeof (EDevs)));
+			CBDevice.SelectedIndex = CBDevice.FindString (Properties.Settings.Default.asDevComPort);
+			NUDFont.Value = Properties.Settings.Default.dmSizeFontByComPort;
 			//Log = new TTrace ();
 		}
 		//___________________________________________________________________________
@@ -89,8 +111,6 @@ namespace TestDRVtransGas.COMserver
 			Invoke (MS, new object[] { asMess });
 		}
 		//___________________________________________________________________________
-
-		Color ColorCBPort;
 		private void BConnect_Click (object sender, EventArgs e)
 		{
 			if (CBPort.Text.Length == 0)
@@ -102,7 +122,7 @@ namespace TestDRVtransGas.COMserver
 			{
 				if (ComPort == null)
 				{
-					ComPort = new COMPort (this);
+					ComPort = new COMPort (MessShow, DHandlingRecieve);
 				}
 				if (ComPort.PortIsOpen())
 				{
@@ -129,6 +149,46 @@ namespace TestDRVtransGas.COMserver
 		private void CBBaud_SelectedIndexChanged (object sender, EventArgs e)
 		{
 			Properties.Settings.Default.asBaud = CBBaud.Text;
+		}
+		//___________________________________________________________________________
+		IDevice DevCurr;
+		private void CBDevice_SelectedIndexChanged (object sender, EventArgs e)
+		{
+			switch (CBDevice.SelectedIndex)
+			{
+			case (int)EDevs.Superflo: DevCurr = new CSuperflo (MessShow); break;
+			default:
+				return;
+			}
+			Properties.Settings.Default.asDevComPort = CBDevice.Text;
+			DHandlingRecieve = DevCurr.HandlingRecieve;
+			ComPort?.InitHandlingRecieve (DHandlingRecieve);
+		}
+		//___________________________________________________________________________
+		private void BToClipbrd_Click (object sender, EventArgs e)
+		{
+			if (TBOut.Text.Length > 4)
+			{
+				Clipboard.SetText (TBOut.Text);
+				TBOut.Text = "";
+			}
+		}
+		//___________________________________________________________________________
+		private void CheckBox1_CheckedChanged (object sender, EventArgs e)
+		{
+			Properties.Settings.Default.bWordWrap = ChWordWrap.Checked;
+			TBOut.WordWrap = ChWordWrap.Checked;
+		}
+		//___________________________________________________________________________
+		private void Button2_Click (object sender, EventArgs e)
+		{
+			TBOut.Text = "";
+		}
+		//___________________________________________________________________________
+		private void NUDFont_ValueChanged (object sender, EventArgs e)
+		{
+			TBOut.Font = new Font (TBOut.Font.FontFamily, (float)NUDFont.Value, TBOut.Font.Style);
+			Properties.Settings.Default.dmSizeFontByComPort = NUDFont.Value;
 		}
 		//___________________________________________________________________________
 	}

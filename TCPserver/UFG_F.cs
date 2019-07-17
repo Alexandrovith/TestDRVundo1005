@@ -31,7 +31,7 @@ namespace TestDRVtransGas.TCPserver
 		public CDevUFG_F (FTCPserver Prnt) : base (Prnt)
 		{
 			iBeginData = 0;
-			uiDateArchBeg = Global.DateTimeAsInt (new DateTime (2017, 4, 24, 5, 0, 0));
+			uiDateArchBeg = Global.DateTimeAsInt (new DateTime (2019, 5, 29, 5, 0, 0));
 		}
 		//_________________________________________________________________________
 
@@ -49,7 +49,7 @@ namespace TestDRVtransGas.TCPserver
 				iPosTX = (int)MODBUS3_ANSW.Data;
 
 				ushort usAddrReg = Global.ToUInt16rev (btaRX, (int)MODBUS3_RESP.RegStartH);
-				if (usAddrReg == 0x2000 && btaRX[(int)MODBUS3_RESP.Func] == 3)					// Фармавання архiваў H/D 
+				if (usAddrReg == 0x2003 && btaRX[(int)MODBUS3_RESP.Func] == 3)					// Фармавання архiваў H/D 
 				{
 					iPosTX = (int)CArchVympel.EAnswer.Data;
 					int iArch = btaRX[(int)CArchVympel.ERequest.IDarch + 1];
@@ -262,9 +262,28 @@ namespace TestDRVtransGas.TCPserver
 			}
 		}
 		//_________________________________________________________________________
+		private void ДатаВремя (uint v, ref byte[] btaTX, ref int iPosTX)
+		{
+			throw new NotImplementedException ();
+		}
+		//_________________________________________________________________________
 		private void FillDT (ref byte[] btaTX, ref int iPosTX)
 		{
 			DateTime DT = DateTime.Now;
+			btaTX[iPosTX++] = (byte)DT.Millisecond;
+			btaTX[iPosTX++] = (byte)DT.Second;
+			btaTX[iPosTX++] = (byte)DT.Minute;
+			btaTX[iPosTX++] = (byte)DT.Hour;
+			btaTX[iPosTX++] = (byte)(DT.Year >> 8);
+			btaTX[iPosTX++] = (byte)(DT.Year & 0xFF);
+			btaTX[iPosTX++] = (byte)DT.Month;
+			btaTX[iPosTX++] = (byte)DT.Day;
+		}
+		//_________________________________________________________________________
+		private void FillDTold (ref byte[] btaTX, ref int iPosTX)
+		{
+			DateTime DT = DateTime.Now;
+			btaTX[iPosTX++] = 0;
 			btaTX[iPosTX++] = (byte)DT.Second;
 			btaTX[iPosTX++] = 0;
 			btaTX[iPosTX++] = (byte)DT.Minute;
@@ -277,9 +296,27 @@ namespace TestDRVtransGas.TCPserver
 			btaTX[iPosTX++] = 0;
 			btaTX[iPosTX++] = (byte)DT.Month;
 			btaTX[iPosTX++] = 0;
-			btaTX[iPosTX++] = (byte)DT.Year;
-			btaTX[iPosTX++] = 0;
+			btaTX[iPosTX++] = (byte)(DT.Year - 2000);
 		}
+		//_________________________________________________________________________
+		//private void FillDT (ref byte[] btaTX, ref int iPosTX)
+		//{
+		//	DateTime DT = DateTime.Now;
+		//	btaTX[iPosTX++] = (byte)DT.Second;
+		//	btaTX[iPosTX++] = 0;
+		//	btaTX[iPosTX++] = (byte)DT.Minute;
+		//	btaTX[iPosTX++] = 0;
+		//	btaTX[iPosTX++] = (byte)DT.Hour;
+		//	btaTX[iPosTX++] = 0;
+		//	btaTX[iPosTX++] = (byte)DT.DayOfWeek;
+		//	btaTX[iPosTX++] = 0;
+		//	btaTX[iPosTX++] = (byte)DT.Day;
+		//	btaTX[iPosTX++] = 0;
+		//	btaTX[iPosTX++] = (byte)DT.Month;
+		//	btaTX[iPosTX++] = 0;
+		//	btaTX[iPosTX++] = (byte)DT.Year;
+		//	btaTX[iPosTX++] = 0;
+		//}
 		//_________________________________________________________________________
 		void FillInputReg (ref int iPosTX, byte[] btaRX, ref byte[] btaTX, int iQuantReg)
 		{
@@ -301,9 +338,11 @@ namespace TestDRVtransGas.TCPserver
 		//_________________________________________________________________________
 		private void FillArch (ref int iPos, byte[] btaRX, ref byte[] btaTX, int iQuantRow)
 		{
-			if (btaRX[14] == 1 || btaRX[14] == 2)
+			//if (btaRX[14] == 1 || btaRX[14] == 2)  // Old arch 
+			if (btaRX[9] == 1 || btaRX[9] == 2)
 			{
-				if (btaRX[14] == 1)
+				//if (btaRX[14] == 1)  // Old arch 
+				if (btaRX[9] == 1)
 				Parent.OutToWind ("Часовой");
 				else Parent.OutToWind ("Суточный");
 				FillArchH_D (ref iPos, btaRX, ref btaTX, iQuantRow);

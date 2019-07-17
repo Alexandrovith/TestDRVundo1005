@@ -85,6 +85,7 @@ namespace TestDRVtransGas.TCPtoComPort
 			if (CBDataBit.SelectedIndex == -1 && CBDataBit.Items.Count > 0)
 				CBDataBit.SelectedIndex = 0;
 
+			ChWordWrap.Checked = Properties.Settings.Default.bWordWrapByComPort;
 
 			OutMess = Inv_OutMess;
 			bFirstInput = false;
@@ -285,7 +286,7 @@ namespace TestDRVtransGas.TCPtoComPort
 		//_________________________________________________________________________
 		private void ChWordWrap_CheckedChanged (object sender, EventArgs e)
 		{
-			Properties.Settings.Default.bWordWrap = ChWordWrap.Checked;
+			Properties.Settings.Default.bWordWrapByComPort = ChWordWrap.Checked;
 			TBOut.WordWrap = ChWordWrap.Checked;
 		}
 		//_________________________________________________________________________

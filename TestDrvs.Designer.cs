@@ -201,12 +201,12 @@
 			this.TPParametersScan.Controls.Add(this.PParameters);
 			this.TPParametersScan.Controls.Add(this.BClrErr);
 			this.TPParametersScan.Controls.Add(this.LNumErr);
-			this.TPParametersScan.Controls.Add(this.CBErrors);
 			this.TPParametersScan.Controls.Add(this.BGetErr);
 			this.TPParametersScan.Controls.Add(this.BStopDrv);
 			this.TPParametersScan.Controls.Add(this.BClose);
 			this.TPParametersScan.Controls.Add(this.BTest1);
 			this.TPParametersScan.Controls.Add(this.panel2);
+			this.TPParametersScan.Controls.Add(this.CBErrors);
 			this.TPParametersScan.Location = new System.Drawing.Point(26, 4);
 			this.TPParametersScan.Name = "TPParametersScan";
 			this.TPParametersScan.Padding = new System.Windows.Forms.Padding(3);
@@ -216,10 +216,11 @@
 			// 
 			// PAddingPanel
 			// 
+			this.PAddingPanel.BackColor = System.Drawing.Color.Transparent;
 			this.PAddingPanel.Controls.Add(this.PanelAdd);
 			this.PAddingPanel.Location = new System.Drawing.Point(416, 0);
 			this.PAddingPanel.Name = "PAddingPanel";
-			this.PAddingPanel.Size = new System.Drawing.Size(243, 27);
+			this.PAddingPanel.Size = new System.Drawing.Size(243, 24);
 			this.PAddingPanel.TabIndex = 0;
 			this.PAddingPanel.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseLeave);
 			// 
@@ -234,9 +235,9 @@
 			this.PanelAdd.Controls.Add(this.BZipExtr);
 			this.PanelAdd.Controls.Add(this.BStopStartDev);
 			this.PanelAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.PanelAdd.Location = new System.Drawing.Point(11, 0);
+			this.PanelAdd.Location = new System.Drawing.Point(12, 0);
 			this.PanelAdd.Name = "PanelAdd";
-			this.PanelAdd.Size = new System.Drawing.Size(223, 24);
+			this.PanelAdd.Size = new System.Drawing.Size(223, 16);
 			this.PanelAdd.TabIndex = 0;
 			this.PanelAdd.MouseEnter += new System.EventHandler(this.PAddingPanel_MouseEnter);
 			// 
@@ -260,6 +261,7 @@
 			this.BZipExtr.Size = new System.Drawing.Size(128, 33);
 			this.BZipExtr.TabIndex = 102;
 			this.BZipExtr.Text = "Извлечь zip";
+			this.toolTip1.SetToolTip(this.BZipExtr, "Распаковка всех zip-файлов в каталоге");
 			this.BZipExtr.UseVisualStyleBackColor = true;
 			this.BZipExtr.Click += new System.EventHandler(this.button1_Click);
 			// 
