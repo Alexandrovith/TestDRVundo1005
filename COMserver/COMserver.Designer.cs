@@ -36,7 +36,6 @@
 			this.CBBaud = new System.Windows.Forms.ComboBox();
 			this.BConnect = new System.Windows.Forms.Button();
 			this.BHideOwner = new System.Windows.Forms.Button();
-			this.BClose = new System.Windows.Forms.Button();
 			this.CBDevice = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.BToClipbrd = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
 			this.NUDFont = new System.Windows.Forms.NumericUpDown();
 			this.button2 = new System.Windows.Forms.Button();
 			this.ChWordWrap = new System.Windows.Forms.CheckBox();
+			this.BClose = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NUDFont)).BeginInit();
 			this.SuspendLayout();
@@ -140,19 +140,6 @@
 			this.BHideOwner.Text = "Скрыть";
 			this.BHideOwner.UseVisualStyleBackColor = true;
 			this.BHideOwner.Click += new System.EventHandler(this.BHideOwner_Click);
-			// 
-			// BClose
-			// 
-			this.BClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BClose.ImageKey = "ExitTranspar.png";
-			this.BClose.Location = new System.Drawing.Point(476, 364);
-			this.BClose.Name = "BClose";
-			this.BClose.Size = new System.Drawing.Size(140, 36);
-			this.BClose.TabIndex = 5;
-			this.BClose.Text = "Закрыть";
-			this.BClose.UseVisualStyleBackColor = true;
-			this.BClose.Click += new System.EventHandler(this.BClose_Click);
 			// 
 			// CBDevice
 			// 
@@ -260,16 +247,29 @@
 			this.ChWordWrap.UseVisualStyleBackColor = true;
 			this.ChWordWrap.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
 			// 
+			// BClose
+			// 
+			this.BClose.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BClose.Image = global::TestDRVtransGas.Properties.Resources.ExitTranspar;
+			this.BClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.BClose.Location = new System.Drawing.Point(476, 360);
+			this.BClose.Name = "BClose";
+			this.BClose.Size = new System.Drawing.Size(140, 36);
+			this.BClose.TabIndex = 110;
+			this.BClose.Text = "Закрыть";
+			this.BClose.UseVisualStyleBackColor = true;
+			this.BClose.Click += new System.EventHandler(this.BClose_Click);
+			// 
 			// FCOMserver
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(628, 405);
+			this.Controls.Add(this.BClose);
 			this.Controls.Add(this.TBOut);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.CBDevice);
-			this.Controls.Add(this.BClose);
 			this.Controls.Add(this.BHideOwner);
 			this.Controls.Add(this.BConnect);
 			this.Controls.Add(this.CBBaud);
@@ -281,6 +281,7 @@
 			this.Text = "COM-port server";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FCOMserver_FormClosing);
 			this.Load += new System.EventHandler(this.FCOMserver_Load);
+			this.Move += new System.EventHandler(this.FCOMserver_Move);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NUDFont)).EndInit();
@@ -296,7 +297,6 @@
 		public System.Windows.Forms.ComboBox CBPort;
 		public System.Windows.Forms.ComboBox CBBaud;
 		private System.Windows.Forms.Button BHideOwner;
-		private System.Windows.Forms.Button BClose;
 		public System.Windows.Forms.TextBox TBOut;
 		private System.Windows.Forms.ComboBox CBDevice;
 		private System.Windows.Forms.Label label3;
@@ -306,5 +306,6 @@
 		private System.Windows.Forms.NumericUpDown NUDFont;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.CheckBox ChWordWrap;
+		private System.Windows.Forms.Button BClose;
 	}
 }

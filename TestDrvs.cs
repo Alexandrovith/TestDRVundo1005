@@ -53,6 +53,8 @@ namespace TestDRVtransGas
 		CTCPtoTCP TCPtoTCP;
 		CTCPtoComPort TCPtoComPort;
 
+		string asDirArch;
+
 
 		public FTestDrvs ()
 		{
@@ -64,6 +66,9 @@ namespace TestDRVtransGas
 			TrWorkTime.Elapsed += Elapsed_CalcWorkTime;
 			TrWorkTime.Start ();
 			asCurrentDirectory = Directory.GetCurrentDirectory ();
+			asDirArch = asCurrentDirectory + @"\ARCH";
+			if (Directory.Exists (asDirArch) == false)
+				Directory.CreateDirectory (asDirArch);
 
 			Devices = new TDevices (TPDevices, this);
 			// Фирст даты архивов 
@@ -87,7 +92,7 @@ namespace TestDRVtransGas
 
 			Params = new TParams (TPParams, this);
 			Text += " [driver v " + DRV.GetVersion () + "]";
-			LVersion.Text = "v " + Version;
+			//LVersion.Text = "v " + Version;
 			sCaption = Text;
 			Move -= FTestDrivers_Move;
 			Resize -= FTestDrivers_Resize;
@@ -167,7 +172,6 @@ namespace TestDRVtransGas
 			TCPtoComPort = new CTCPtoComPort (this);
 			TCPtoComPort.Parent = TPTCPtoComPort;
 
-
 						// Этот блок всегда в конце !!! 
 						// Вносить сюда новые UserControls
 						// UserControls yнаследовать от IUserControls
@@ -179,9 +183,10 @@ namespace TestDRVtransGas
 		{
 			get
 			{
-				Assembly asm = Assembly.GetExecutingAssembly ();
-				FileVersionInfo fvi = FileVersionInfo.GetVersionInfo (asm.Location);
-				return fvi.FileVersion;
+				return Foo.Properties.VersionInfo.BuildDate.ToString("u").Replace('Z', (char)0);
+				//Assembly asm = Assembly.GetExecutingAssembly ();//.GetName().Version.ToString();
+				//FileVersionInfo fvi = FileVersionInfo.GetVersionInfo (asm.Location);
+				//return fvi.ProductVersion;//.FileVersion;
 			}
 		}
 		//_________________________________________________________________________
@@ -297,7 +302,7 @@ namespace TestDRVtransGas
 
 				DRV.Init (null, Devices.InitStr ());
 
-				asNameFlAsDate = asCurrentDirectory + @"\" + CreateFileName ();
+				asNameFlAsDate = asDirArch + CreateFileName ();
 				NameFileArch.Clear ();
 				for (int i = 1; i <= ВсегоПараметров; i++)
 				{
@@ -1040,7 +1045,11 @@ namespace TestDRVtransGas
 			PAddingPanel.Width = 244;
 			PAddingPanel.Height = 23;
 		}
-
+		//_________________________________________________________________________
+		private void FTestDrvs_Load (object sender, EventArgs e)
+		{
+			LVersion.Text = Version;
+		}
 		//_________________________________________________________________________
 		private void CBErrors_MouseEnter (object sender, EventArgs e)
 		{

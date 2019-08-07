@@ -227,5 +227,11 @@
     <Setting Name="dmSizeFontByComPort" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">9</Value>
     </Setting>
+    <Setting Name="iPosComPortX" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="iPosComPortY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

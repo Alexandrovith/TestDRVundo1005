@@ -24,7 +24,7 @@ namespace TestDRVtransGas.COMserver
 {
 	public partial class FCOMserver : Form
 	{
-		enum EDevs { Superflo };
+		public enum EDevs { SF21RU5D, SF21RU6D, SF21RU7С };
 
 		COMPort ComPort;
 		CTrace Log;
@@ -39,6 +39,7 @@ namespace TestDRVtransGas.COMserver
 			InitializeComponent ();
 			Owner = own;
 			ColorCBPort = CBPort.BackColor;
+
 			CBBaud.SelectedIndex = CBBaud.FindString (Properties.Settings.Default.asBaud);
 			CBPort.Items.AddRange (SerialPort.GetPortNames ());
 			CBPort.SelectedIndex = CBPort.FindString (Properties.Settings.Default.asCOMport);
@@ -53,6 +54,11 @@ namespace TestDRVtransGas.COMserver
 			Owner.Visible = true;
 			//CloseAll ();
 			//((FTestDrvs)Owner).TCPserver = null;
+			if (bFormMove)
+			{
+				Properties.Settings.Default.iPosComPortX = Left;
+				Properties.Settings.Default.iPosComPortY = Top;
+			}
 			Properties.Settings.Default.Save ();
 			if (ComPort != null)
 			{
@@ -62,7 +68,10 @@ namespace TestDRVtransGas.COMserver
 		//___________________________________________________________________________
 		private void FCOMserver_Load (object sender, EventArgs e)
 		{
-			Location = new Point (Owner.Left + 110, Owner.Top + Owner.Height - Height);
+			//Location = new Point (Owner.Left + 110, Owner.Top + Owner.Height - Height);
+			Move -= FCOMserver_Move;
+			Location = new Point (Properties.Settings.Default.iPosComPortX, Properties.Settings.Default.iPosComPortY);
+			Move += FCOMserver_Move;
 		}
 		//___________________________________________________________________________
 		private void BHideOwner_Click (object sender, EventArgs e)
@@ -75,14 +84,8 @@ namespace TestDRVtransGas.COMserver
 			else
 			{
 				Owner.Visible = true;
-				BHideOwner.Text = "Скрыть";
+				BHideOwner.Text = "Сокрыть";
 			}
-		}
-		//___________________________________________________________________________
-		private void BClose_Click (object sender, EventArgs e)
-		{
-			Owner.Visible = true;
-			Close ();
 		}
 		//_________________________________________________________________________
 		string AddDTtoMessage (string asMess, bool bDataTimeShow = true)
@@ -97,18 +100,18 @@ namespace TestDRVtransGas.COMserver
 		}
 		//___________________________________________________________________________
 
-		public delegate void DMessageShow(string asMess);
+		public delegate void DMessageShow(string asMess, bool bTateTimeShow = true);
 		DMessageShow MS;
 
-		private void OutToTB (string asMess)
+		private void OutToTB (string asMess, bool bTateTimeShow)
 		{
-			TBOut.AppendText (AddDTtoMessage(asMess) + Environment.NewLine);
+			TBOut.AppendText (AddDTtoMessage(asMess, bTateTimeShow) + Environment.NewLine);
 		}
 		//___________________________________________________________________________
-		public void MessShow(string asMess)
+		public void MessShow(string asMess, bool bTateTimeShow = true)
 		{
 			MS = OutToTB;
-			Invoke (MS, new object[] { asMess });
+			Invoke (MS, new object[] { asMess, bTateTimeShow });
 		}
 		//___________________________________________________________________________
 		private void BConnect_Click (object sender, EventArgs e)
@@ -156,7 +159,9 @@ namespace TestDRVtransGas.COMserver
 		{
 			switch (CBDevice.SelectedIndex)
 			{
-			case (int)EDevs.Superflo: DevCurr = new CSuperflo (MessShow); break;
+			case (int)EDevs.SF21RU5D:
+			case (int)EDevs.SF21RU6D:
+			case (int)EDevs.SF21RU7С: DevCurr = new CSuperflo (MessShow, (EDevs)CBDevice.SelectedIndex); break;
 			default:
 				return;
 			}
@@ -189,6 +194,18 @@ namespace TestDRVtransGas.COMserver
 		{
 			TBOut.Font = new Font (TBOut.Font.FontFamily, (float)NUDFont.Value, TBOut.Font.Style);
 			Properties.Settings.Default.dmSizeFontByComPort = NUDFont.Value;
+		}
+		//___________________________________________________________________________
+		bool bFormMove;
+		private void FCOMserver_Move (object sender, EventArgs e)
+		{
+			bFormMove = true;
+		}
+		//___________________________________________________________________________
+		private void BClose_Click (object sender, EventArgs e)
+		{
+			Owner.Visible = true;
+			Close ();
 		}
 		//___________________________________________________________________________
 	}

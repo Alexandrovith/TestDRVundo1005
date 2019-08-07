@@ -90,7 +90,6 @@
 			this.PParameters = new System.Windows.Forms.Panel();
 			this.BClrErr = new System.Windows.Forms.Button();
 			this.LNumErr = new System.Windows.Forms.Label();
-			this.CBErrors = new System.Windows.Forms.ComboBox();
 			this.BGetErr = new System.Windows.Forms.Button();
 			this.BStopDrv = new System.Windows.Forms.Button();
 			this.BClose = new System.Windows.Forms.Button();
@@ -100,6 +99,7 @@
 			this.UDIntervalScan = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.RBScan = new System.Windows.Forms.RadioButton();
+			this.CBErrors = new System.Windows.Forms.ComboBox();
 			this.TPDevices = new System.Windows.Forms.TabPage();
 			this.BSaveDevices = new System.Windows.Forms.Button();
 			this.TPParams = new System.Windows.Forms.TabPage();
@@ -398,9 +398,9 @@
 			this.LVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.LVersion.BackColor = System.Drawing.Color.LightGray;
 			this.LVersion.ForeColor = System.Drawing.Color.Snow;
-			this.LVersion.Location = new System.Drawing.Point(938, 0);
+			this.LVersion.Location = new System.Drawing.Point(904, -3);
 			this.LVersion.Name = "LVersion";
-			this.LVersion.Size = new System.Drawing.Size(72, 20);
+			this.LVersion.Size = new System.Drawing.Size(106, 20);
 			this.LVersion.TabIndex = 99;
 			this.LVersion.Text = "22.22.22.22";
 			this.LVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -926,20 +926,6 @@
 			this.LNumErr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.LNumErr.Visible = false;
 			// 
-			// CBErrors
-			// 
-			this.CBErrors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.CBErrors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBErrors.FormattingEnabled = true;
-			this.CBErrors.Location = new System.Drawing.Point(428, 32);
-			this.CBErrors.MaxDropDownItems = 24;
-			this.CBErrors.Name = "CBErrors";
-			this.CBErrors.Size = new System.Drawing.Size(578, 21);
-			this.CBErrors.TabIndex = 27;
-			this.toolTip1.SetToolTip(this.CBErrors, "e3e3");
-			this.CBErrors.MouseEnter += new System.EventHandler(this.CBErrors_MouseEnter);
-			// 
 			// BGetErr
 			// 
 			this.BGetErr.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1071,6 +1057,20 @@
 			this.RBScan.TabStop = true;
 			this.RBScan.UseVisualStyleBackColor = true;
 			// 
+			// CBErrors
+			// 
+			this.CBErrors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.CBErrors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CBErrors.FormattingEnabled = true;
+			this.CBErrors.Location = new System.Drawing.Point(428, 32);
+			this.CBErrors.MaxDropDownItems = 24;
+			this.CBErrors.Name = "CBErrors";
+			this.CBErrors.Size = new System.Drawing.Size(578, 21);
+			this.CBErrors.TabIndex = 27;
+			this.toolTip1.SetToolTip(this.CBErrors, "e3e3");
+			this.CBErrors.MouseEnter += new System.EventHandler(this.CBErrors_MouseEnter);
+			// 
 			// TPDevices
 			// 
 			this.TPDevices.AutoScroll = true;
@@ -1186,6 +1186,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Тест перводвигателей (drivers) БТГ";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FTestDrivers_FormClosing);
+			this.Load += new System.EventHandler(this.FTestDrvs_Load);
 			this.Move += new System.EventHandler(this.FTestDrivers_Move);
 			this.Resize += new System.EventHandler(this.FTestDrivers_Resize);
 			this.TCTestDRV.ResumeLayout(false);

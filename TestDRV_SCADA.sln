@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelTransCONSTS", "..\..\gas\SCADA\gasscada\Drivers\BelTransGasDRV\CONSTS\BelTransCONSTS.csproj", "{3E49CDD1-23C2-40CC-84C9-A46888C59E8B}"
 EndProject
@@ -9,15 +9,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanParamOfDevices", "..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelTransGasDRV", "..\..\gas\SCADA\gasscada\Drivers\BelTransGasDRV\BelTransGasDRV.csproj", "{F7C24EA3-5B42-4666-AA37-B2E60CDA7A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDRV", "TestDRV.csproj", "{A541BC4C-0F89-433D-97AE-960E34CDE97F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceInterfaces", "..\..\gas\SCADA\SCADA\DeviceInterfaces\DeviceInterfaces.csproj", "{D66E81CA-1C8F-46A5-BECC-9D7206B9F533}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpListener", "..\TcpListener\TcpListener.csproj", "{9E457B4B-F7E7-438E-9095-AD831A5D49C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPclient", "..\TCPclient\TCPclient.csproj", "{E1637C13-CD2F-44EB-A392-24DADD35E63E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RmgPriborDrv", "..\..\gas\SCADA\gasscada\Drivers\RmgPriborDrv\RmgPriborDrv.vcxproj", "{9AC3849B-783D-45A6-8954-1CD79A4E8928}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GeneralR", "..\..\gas\SCADA\gasscada\Drivers\RmgPriborDrv\RmgPriborDrv.vcxproj", "{9AC3849B-783D-45A6-8954-1CD79A4E8928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDRV", "TestDRV.csproj", "{F77E79EF-4D38-4022-9FD3-C47837BB419E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,18 +65,6 @@ Global
 		{F7C24EA3-5B42-4666-AA37-B2E60CDA7A96}.Release|x64.Build.0 = Release|Any CPU
 		{F7C24EA3-5B42-4666-AA37-B2E60CDA7A96}.Release|x86.ActiveCfg = Release|x86
 		{F7C24EA3-5B42-4666-AA37-B2E60CDA7A96}.Release|x86.Build.0 = Release|x86
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Debug|x64.Build.0 = Debug|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Debug|x86.ActiveCfg = Debug|x86
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Debug|x86.Build.0 = Debug|x86
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Release|x64.ActiveCfg = Release|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Release|x64.Build.0 = Release|Any CPU
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Release|x86.ActiveCfg = Release|x86
-		{A541BC4C-0F89-433D-97AE-960E34CDE97F}.Release|x86.Build.0 = Release|x86
 		{D66E81CA-1C8F-46A5-BECC-9D7206B9F533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D66E81CA-1C8F-46A5-BECC-9D7206B9F533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D66E81CA-1C8F-46A5-BECC-9D7206B9F533}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -123,6 +111,18 @@ Global
 		{9AC3849B-783D-45A6-8954-1CD79A4E8928}.Release|x64.Build.0 = Release|x64
 		{9AC3849B-783D-45A6-8954-1CD79A4E8928}.Release|x86.ActiveCfg = Release|Win32
 		{9AC3849B-783D-45A6-8954-1CD79A4E8928}.Release|x86.Build.0 = Release|Win32
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Debug|x64.Build.0 = Debug|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Debug|x86.ActiveCfg = Debug|x86
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Debug|x86.Build.0 = Debug|x86
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Release|x64.ActiveCfg = Release|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Release|x64.Build.0 = Release|Any CPU
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Release|x86.ActiveCfg = Release|x86
+		{F77E79EF-4D38-4022-9FD3-C47837BB419E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

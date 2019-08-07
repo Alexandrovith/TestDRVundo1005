@@ -56,7 +56,7 @@ namespace TestDRVtransGas.COMserver
 			{
 				return OpenPort (sPortName, iBaud, Parity.None, 8, 1);
 			}
-			ShowMess (string.Format ("Ошибка в скорости порта: [{0}]", asBaud));
+			ShowMess ($"Ошибка в скорости порта: [{asBaud}]");
 			return null;
 		}
 		//_________________________________________________________________________
@@ -81,13 +81,13 @@ namespace TestDRVtransGas.COMserver
 			{
 				SP = new SerialPort (sPortName, iBaud, (Parity)Parity, iDataBits, (StopBits)iStopBits);
 				//SP.Handshake = Handshake.None;
-				
-				SP.ReadTimeout = 50;
-				SP.WriteTimeout = (int)CONST.TIMEOUT.Write;
+
+				SP.ReadTimeout = 100;
+				//SP.WriteTimeout = (int)CONST.TIMEOUT.Write;
 				SP.ParityReplace = (byte)Parity.None;
 				SP.ReadBufferSize = SIZE_RX;
 				SP.WriteBufferSize = SIZE_TX;
-				SP.ErrorReceived += new SerialErrorReceivedEventHandler (ErrorReceived);
+				//SP.ErrorReceived += new SerialErrorReceivedEventHandler (ErrorReceived);
 				SP.DataReceived += new SerialDataReceivedEventHandler (DataReceived);
 				SP.Open ();
 			}
@@ -110,7 +110,7 @@ namespace TestDRVtransGas.COMserver
 			{
 				lock (oRread)
 				{
-					Thread.Sleep (SP.ReadTimeout);
+					Thread.Sleep (200);
 					int iBytesToRead = SP.Read (BufRX, 0, BufRX.Length);  	//if (ErrData ()) return;
 					ShowMess ("RX: " + Global.ByteArToStr (BufRX, 0, iBytesToRead));
 					byte[] btaToSend = EvHandlingRecieve (BufRX, iBytesToRead);

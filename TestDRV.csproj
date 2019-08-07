@@ -83,7 +83,7 @@
   <ItemGroup>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Ionic.Zip.dll</HintPath>
+      <HintPath>..\ReserveDB\External\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.10.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -192,6 +192,7 @@
     <Compile Include="TestsDifferent\TestDIfferent.Designer.cs">
       <DependentUpon>TestDIfferent.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerisonInfo.cs" />
     <Compile Include="WrParams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,4 +340,19 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="MakeVersionInfo" BeforeTargets="Compile">
+    <PropertyGroup>
+      <_VersionInfo>
+        using System;
+        namespace Foo.Properties
+        {
+        class VersionInfo
+        {
+        public static readonly DateTime BuildDate = new DateTime($([System.DateTime]::UtcNow.Ticks));
+        }
+        }
+      </_VersionInfo>
+    </PropertyGroup>
+    <WriteLinesToFile File="Properties\VerisonInfo.cs" Lines="$(_VersionInfo.Replace(';', '%3b'))" Overwrite="true" />
+  </Target>
 </Project>
