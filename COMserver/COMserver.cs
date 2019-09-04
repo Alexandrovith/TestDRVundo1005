@@ -46,6 +46,9 @@ namespace TestDRVtransGas.COMserver
 			CBDevice.Items.AddRange (Enum.GetNames (typeof (EDevs)));
 			CBDevice.SelectedIndex = CBDevice.FindString (Properties.Settings.Default.asDevComPort);
 			NUDFont.Value = Properties.Settings.Default.dmSizeFontByComPort;
+			ChBChangePar.CheckedChanged -= ChBChangePar_CheckedChanged;
+			ChBChangePar.Checked = Properties.Settings.Default.bChangeVal_ComP;
+			ChBChangePar.CheckedChanged += ChBChangePar_CheckedChanged;
 			//Log = new TTrace ();
 		}
 		//___________________________________________________________________________
@@ -100,15 +103,15 @@ namespace TestDRVtransGas.COMserver
 		}
 		//___________________________________________________________________________
 
-		public delegate void DMessageShow(string asMess, bool bTateTimeShow = true);
+		public delegate void DMessageShow (string asMess, bool bTateTimeShow = true);
 		DMessageShow MS;
 
 		private void OutToTB (string asMess, bool bTateTimeShow)
 		{
-			TBOut.AppendText (AddDTtoMessage(asMess, bTateTimeShow) + Environment.NewLine);
+			TBOut.AppendText (AddDTtoMessage (asMess, bTateTimeShow) + Environment.NewLine);
 		}
 		//___________________________________________________________________________
-		public void MessShow(string asMess, bool bTateTimeShow = true)
+		public void MessShow (string asMess, bool bTateTimeShow = true)
 		{
 			MS = OutToTB;
 			Invoke (MS, new object[] { asMess, bTateTimeShow });
@@ -127,7 +130,7 @@ namespace TestDRVtransGas.COMserver
 				{
 					ComPort = new COMPort (MessShow, DHandlingRecieve);
 				}
-				if (ComPort.PortIsOpen())
+				if (ComPort.PortIsOpen ())
 				{
 					ComPort.ClosePort ();
 					TBOut.AppendText (string.Format ("Порт [{0}] закрыт\n", ComPort.PortName ()));
@@ -140,8 +143,8 @@ namespace TestDRVtransGas.COMserver
 						BConnect.Text = CBPort.Text;
 						TBOut.AppendText (string.Format ("Порт [{0}] открыт\n", ComPort.PortName ()));
 					}
-				}		
-			}			
+				}
+			}
 		}
 		//___________________________________________________________________________
 		private void CBPort_SelectedIndexChanged (object sender, EventArgs e)
@@ -206,6 +209,13 @@ namespace TestDRVtransGas.COMserver
 		{
 			Owner.Visible = true;
 			Close ();
+		}
+		//___________________________________________________________________________
+		private void ChBChangePar_CheckedChanged (object sender, EventArgs e)
+		{
+			Properties.Settings.Default.bChangeVal_ComP = ChBChangePar.Checked;
+			if (DevCurr != null)
+				DevCurr.bChageParams = ChBChangePar.Checked;
 		}
 		//___________________________________________________________________________
 	}

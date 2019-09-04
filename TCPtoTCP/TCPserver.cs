@@ -155,16 +155,17 @@ namespace TestDRVtransGas.TCPtoTCP
 		public void Close ()
 		{
 			bLoop = false;
-			if (Client != null)
-			{
-				//var Strm = Client.GetStream ();
-				if (Stream != null)
-				{
-					Stream.Close ();
-				}
-				Client.Close ();
-				Client = null;
-			}
+			Listener?.Stop ();
+			Stream?.Close ();
+			Client?.Close ();
+			Client = null;
+			//if (Client != null)
+			//{
+			//	//var Strm = Client.GetStream ();
+			//	Stream?.Close ();
+			//	Client?.Close ();
+			//	Client = null;
+			//}
 		}
 
 	}

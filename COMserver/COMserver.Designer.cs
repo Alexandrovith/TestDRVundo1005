@@ -45,6 +45,7 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.ChWordWrap = new System.Windows.Forms.CheckBox();
 			this.BClose = new System.Windows.Forms.Button();
+			this.ChBChangePar = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NUDFont)).BeginInit();
 			this.SuspendLayout();
@@ -187,7 +188,7 @@
 			this.panel1.Controls.Add(this.button2);
 			this.panel1.Controls.Add(this.BToClipbrd);
 			this.panel1.Controls.Add(this.ChWordWrap);
-			this.panel1.Location = new System.Drawing.Point(459, 170);
+			this.panel1.Location = new System.Drawing.Point(459, 190);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(121, 106);
 			this.panel1.TabIndex = 109;
@@ -249,6 +250,7 @@
 			// 
 			// BClose
 			// 
+			this.BClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.BClose.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BClose.Image = global::TestDRVtransGas.Properties.Resources.ExitTranspar;
 			this.BClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,11 +262,24 @@
 			this.BClose.UseVisualStyleBackColor = true;
 			this.BClose.Click += new System.EventHandler(this.BClose_Click);
 			// 
+			// ChBChangePar
+			// 
+			this.ChBChangePar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ChBChangePar.AutoSize = true;
+			this.ChBChangePar.Location = new System.Drawing.Point(476, 156);
+			this.ChBChangePar.Name = "ChBChangePar";
+			this.ChBChangePar.Size = new System.Drawing.Size(114, 17);
+			this.ChBChangePar.TabIndex = 111;
+			this.ChBChangePar.Text = "Менять значения";
+			this.ChBChangePar.UseVisualStyleBackColor = true;
+			this.ChBChangePar.CheckedChanged += new System.EventHandler(this.ChBChangePar_CheckedChanged);
+			// 
 			// FCOMserver
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(628, 405);
+			this.Controls.Add(this.ChBChangePar);
 			this.Controls.Add(this.BClose);
 			this.Controls.Add(this.TBOut);
 			this.Controls.Add(this.panel1);
@@ -307,5 +322,6 @@
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.CheckBox ChWordWrap;
 		private System.Windows.Forms.Button BClose;
+		private System.Windows.Forms.CheckBox ChBChangePar;
 	}
 }

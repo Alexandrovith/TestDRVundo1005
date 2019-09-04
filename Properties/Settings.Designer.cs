@@ -942,5 +942,17 @@ namespace TestDRVtransGas.Properties {
                 this["iPosComPortY"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool bChangeVal_ComP {
+            get {
+                return ((bool)(this["bChangeVal_ComP"]));
+            }
+            set {
+                this["bChangeVal_ComP"] = value;
+            }
+        }
     }
 }
