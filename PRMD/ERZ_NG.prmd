@@ -1,1 +1,4 @@
-ERZ_NG;NG ArchAlarm;WebArch;td th 16;ArchAlarm;float;400000;in;;;
+ERZ;HD01;MT3;0 4 NG;Single;float;5000;in;;;
+ERZ;AC01;MT3;0 0 NG;Single;float;5000;in;;;
+ERZ;HD01;MT3;0 2;Single;float;5000;in;;;
+ERZ;AC01;MT3;0 6;Single;float;5000;in;;;

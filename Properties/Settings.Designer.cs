@@ -12,7 +12,7 @@ namespace TestDRVtransGas.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -85,7 +85,7 @@ namespace TestDRVtransGas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TempParName;DevDTSet")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DevDTSet;CO2;N2;Density;Rst")]
         public string asParameterName {
             get {
                 return ((string)(this["asParameterName"]));
@@ -309,7 +309,7 @@ namespace TestDRVtransGas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1;localhost;192.168.226.1;192.168.111.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.23;127.0.0.1;localhost;192.168.226.1;192.168.111.1")]
         public string IP {
             get {
                 return ((string)(this["IP"]));
@@ -333,13 +333,13 @@ namespace TestDRVtransGas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int iTCPdeviceCurr {
+        [global::System.Configuration.DefaultSettingValueAttribute("Vympel500")]
+        public string asTCPdeviceCurr {
             get {
-                return ((int)(this["iTCPdeviceCurr"]));
+                return ((string)(this["asTCPdeviceCurr"]));
             }
             set {
-                this["iTCPdeviceCurr"] = value;
+                this["asTCPdeviceCurr"] = value;
             }
         }
         
@@ -429,7 +429,7 @@ namespace TestDRVtransGas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.23")]
         public string asIPserver {
             get {
                 return ((string)(this["asIPserver"]));

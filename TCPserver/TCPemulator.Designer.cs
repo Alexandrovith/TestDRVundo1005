@@ -139,7 +139,7 @@
 			this.RTBOut.Name = "RTBOut";
 			this.RTBOut.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
 			this.RTBOut.ShowSelectionMargin = true;
-			this.RTBOut.Size = new System.Drawing.Size(544, 112);
+			this.RTBOut.Size = new System.Drawing.Size(544, 136);
 			this.RTBOut.TabIndex = 34;
 			this.RTBOut.Text = "";
 			this.RTBOut.WordWrap = false;
@@ -215,7 +215,7 @@
 			this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
 			this.groupBox1.Controls.Add(this.PBOpacity);
 			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.groupBox1.Location = new System.Drawing.Point(345, 199);
+			this.groupBox1.Location = new System.Drawing.Point(345, 223);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(214, 35);
 			this.groupBox1.TabIndex = 48;
@@ -229,7 +229,7 @@
 			this.BHideOwner.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BHideOwner.Image = global::TestDRVtransGas.Properties.Resources.Icon_06_p6;
 			this.BHideOwner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BHideOwner.Location = new System.Drawing.Point(116, 198);
+			this.BHideOwner.Location = new System.Drawing.Point(116, 222);
 			this.BHideOwner.Name = "BHideOwner";
 			this.BHideOwner.Size = new System.Drawing.Size(96, 35);
 			this.BHideOwner.TabIndex = 49;
@@ -256,7 +256,7 @@
 			this.BTCP_Com.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BTCP_Com.Image = ((System.Drawing.Image)(resources.GetObject("BTCP_Com.Image")));
 			this.BTCP_Com.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BTCP_Com.Location = new System.Drawing.Point(224, 198);
+			this.BTCP_Com.Location = new System.Drawing.Point(224, 222);
 			this.BTCP_Com.Name = "BTCP_Com";
 			this.BTCP_Com.Size = new System.Drawing.Size(96, 35);
 			this.BTCP_Com.TabIndex = 98;
@@ -273,7 +273,7 @@
 			this.BClose.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BClose.Image = global::TestDRVtransGas.Properties.Resources.ExitTranspar;
 			this.BClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BClose.Location = new System.Drawing.Point(8, 198);
+			this.BClose.Location = new System.Drawing.Point(8, 222);
 			this.BClose.Name = "BClose";
 			this.BClose.Size = new System.Drawing.Size(96, 35);
 			this.BClose.TabIndex = 45;
@@ -288,7 +288,7 @@
 			this.BClearOut.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BClearOut.Image = global::TestDRVtransGas.Properties.Resources.Orange_System_Icon_06_p6;
 			this.BClearOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BClearOut.Location = new System.Drawing.Point(512, 44);
+			this.BClearOut.Location = new System.Drawing.Point(512, 46);
 			this.BClearOut.Name = "BClearOut";
 			this.BClearOut.Size = new System.Drawing.Size(40, 40);
 			this.BClearOut.TabIndex = 37;
@@ -416,7 +416,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(559, 234);
+			this.ClientSize = new System.Drawing.Size(559, 258);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.BTCP_Com);
 			this.Controls.Add(this.BHideOwner);

@@ -48,10 +48,12 @@ namespace TestDRVtransGas.TCPserver
 				{
 					iPosTX = (int)CArchVympel.EAnswer.Data;
 					int iArch = btaRX[(int)CArchVympel.ERequest.IDarch + 1];
-					int iQuantRow = (Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.QuantRegRd) - 3) /
-														CArchVympel.iaQuantRegInRec[iArch];
-					btaTX = new byte[(int)CArchVympel.EAnswer.Data + iQuantRow * CArchVympel.iaQuantRegInRec[iArch] * 2 + 2];    // Добавлять 3 регистра? 
-
+					//TODO EDIT:
+					int iQuantRow = 2; //(Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.QuantRegRd) - 3) ///TODO EDIT
+					//									CArchVympel.iaQuantRegInRec[iArch];
+					//btaTX = new byte[(int)CArchVympel.EAnswer.Data + iQuantRow * CArchVympel.iaQuantRegInRec[iArch] * 2 + 2];    // Добавлять 3 регистра? //TODO EDIT
+					btaTX = new byte[(int)CArchVympel.EAnswer.Data + iQuantRow * 5 * 2 + 2];    // Добавлять 3 регистра? 
+					Parent.OutToWind ("ИСПРАВИТЬ выдачу архивов SitransCV");
 					FillArch (ref iPosTX, btaRX, ref btaTX, iQuantRow);
 
 					int iQuantBytes = iPosTX + 2 - (int)CArchVympel.EAnswer.CodeServiceFunc;    // iQuantRow * CArchVympel.iaQuantRegInRec[iArch] * 2;

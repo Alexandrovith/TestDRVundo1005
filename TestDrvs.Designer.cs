@@ -69,19 +69,22 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.TBIDwritePar = new System.Windows.Forms.TextBox();
 			this.BWritePar = new System.Windows.Forms.Button();
-			this.CBStateLog = new System.Windows.Forms.ComboBox();
 			this.BSwithLog = new System.Windows.Forms.Button();
 			this.label10 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.BSetFirstDateArchs = new System.Windows.Forms.Button();
+			this.panel8 = new System.Windows.Forms.Panel();
 			this.label17 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
 			this.TPAlarm = new System.Windows.Forms.DateTimePicker();
+			this.panel7 = new System.Windows.Forms.Panel();
+			this.label16 = new System.Windows.Forms.Label();
 			this.TPInterfer = new System.Windows.Forms.DateTimePicker();
+			this.panel6 = new System.Windows.Forms.Panel();
 			this.label15 = new System.Windows.Forms.Label();
 			this.TPArchHour = new System.Windows.Forms.DateTimePicker();
+			this.panel5 = new System.Windows.Forms.Panel();
 			this.label13 = new System.Windows.Forms.Label();
 			this.TPArchDay = new System.Windows.Forms.DateTimePicker();
+			this.BSetFirstDateArchs = new System.Windows.Forms.Button();
 			this.LWorkTime = new System.Windows.Forms.Label();
 			this.LPuskTime = new System.Windows.Forms.Label();
 			this.CBDevicesStat = new System.Windows.Forms.ComboBox();
@@ -100,6 +103,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.RBScan = new System.Windows.Forms.RadioButton();
 			this.CBErrors = new System.Windows.Forms.ComboBox();
+			this.CBStateLog = new System.Windows.Forms.ComboBox();
 			this.TPDevices = new System.Windows.Forms.TabPage();
 			this.BSaveDevices = new System.Windows.Forms.Button();
 			this.TPParams = new System.Windows.Forms.TabPage();
@@ -122,6 +126,10 @@
 			this.panel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NTimeResp)).BeginInit();
 			this.panel1.SuspendLayout();
+			this.panel8.SuspendLayout();
+			this.panel7.SuspendLayout();
+			this.panel6.SuspendLayout();
+			this.panel5.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDIntervalScan)).BeginInit();
 			this.TPDevices.SuspendLayout();
@@ -159,6 +167,7 @@
 			this.TCTestDRV.Location = new System.Drawing.Point(0, 0);
 			this.TCTestDRV.Multiline = true;
 			this.TCTestDRV.Name = "TCTestDRV";
+			this.TCTestDRV.Padding = new System.Drawing.Point(8, 3);
 			this.TCTestDRV.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.TCTestDRV.SelectedIndex = 0;
 			this.TCTestDRV.Size = new System.Drawing.Size(1040, 585);
@@ -188,7 +197,6 @@
 			this.TPParametersScan.Controls.Add(this.label3);
 			this.TPParametersScan.Controls.Add(this.TBIDwritePar);
 			this.TPParametersScan.Controls.Add(this.BWritePar);
-			this.TPParametersScan.Controls.Add(this.CBStateLog);
 			this.TPParametersScan.Controls.Add(this.BSwithLog);
 			this.TPParametersScan.Controls.Add(this.label10);
 			this.TPParametersScan.Controls.Add(this.panel1);
@@ -207,6 +215,7 @@
 			this.TPParametersScan.Controls.Add(this.BTest1);
 			this.TPParametersScan.Controls.Add(this.panel2);
 			this.TPParametersScan.Controls.Add(this.CBErrors);
+			this.TPParametersScan.Controls.Add(this.CBStateLog);
 			this.TPParametersScan.Location = new System.Drawing.Point(26, 4);
 			this.TPParametersScan.Name = "TPParametersScan";
 			this.TPParametersScan.Padding = new System.Windows.Forms.Padding(3);
@@ -322,6 +331,7 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.BackColor = System.Drawing.Color.AntiqueWhite;
 			this.groupBox1.Controls.Add(this.NUDIntervalSendFHPDev);
 			this.groupBox1.Controls.Add(this.UDRepeatWrite);
 			this.groupBox1.Controls.Add(this.label11);
@@ -340,7 +350,7 @@
             0,
             0,
             0});
-			this.NUDIntervalSendFHPDev.Location = new System.Drawing.Point(76, 32);
+			this.NUDIntervalSendFHPDev.Location = new System.Drawing.Point(8, 32);
 			this.NUDIntervalSendFHPDev.Maximum = new decimal(new int[] {
             90000,
             0,
@@ -360,7 +370,7 @@
 			// UDRepeatWrite
 			// 
 			this.UDRepeatWrite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.UDRepeatWrite.Location = new System.Drawing.Point(4, 16);
+			this.UDRepeatWrite.Location = new System.Drawing.Point(98, 16);
 			this.UDRepeatWrite.Maximum = new decimal(new int[] {
             10,
             0,
@@ -386,7 +396,7 @@
 			// 
 			this.label11.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label11.Location = new System.Drawing.Point(76, 16);
+			this.label11.Location = new System.Drawing.Point(8, 16);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(84, 17);
 			this.label11.TabIndex = 78;
@@ -559,12 +569,14 @@
 			// 
 			// CBParameterName
 			// 
+			this.CBParameterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CBParameterName.ForeColor = System.Drawing.Color.Indigo;
 			this.CBParameterName.FormattingEnabled = true;
 			this.CBParameterName.Location = new System.Drawing.Point(826, 124);
 			this.CBParameterName.Name = "CBParameterName";
 			this.CBParameterName.Size = new System.Drawing.Size(117, 21);
 			this.CBParameterName.TabIndex = 87;
-			this.CBParameterName.Text = "TempParName";
+			this.CBParameterName.Text = "CO2";
 			this.CBParameterName.SelectedIndexChanged += new System.EventHandler(this.CBParameterName_SelectedIndexChanged);
 			this.CBParameterName.TextChanged += new System.EventHandler(this.CBParameterName_TextChanged);
 			// 
@@ -679,19 +691,6 @@
 			this.BWritePar.UseVisualStyleBackColor = true;
 			this.BWritePar.Click += new System.EventHandler(this.BWritePar_Click);
 			// 
-			// CBStateLog
-			// 
-			this.CBStateLog.FormattingEnabled = true;
-			this.CBStateLog.Items.AddRange(new object[] {
-            "BelTranzDRV.log",
-            "Mem",
-            "NONE"});
-			this.CBStateLog.Location = new System.Drawing.Point(120, 4);
-			this.CBStateLog.Name = "CBStateLog";
-			this.CBStateLog.Size = new System.Drawing.Size(75, 21);
-			this.CBStateLog.TabIndex = 75;
-			this.CBStateLog.Visible = false;
-			// 
 			// BSwithLog
 			// 
 			this.BSwithLog.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -718,19 +717,143 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+			this.panel1.Controls.Add(this.panel8);
+			this.panel1.Controls.Add(this.panel7);
+			this.panel1.Controls.Add(this.panel6);
+			this.panel1.Controls.Add(this.panel5);
 			this.panel1.Controls.Add(this.BSetFirstDateArchs);
-			this.panel1.Controls.Add(this.label17);
-			this.panel1.Controls.Add(this.label16);
-			this.panel1.Controls.Add(this.TPAlarm);
-			this.panel1.Controls.Add(this.TPInterfer);
-			this.panel1.Controls.Add(this.label15);
-			this.panel1.Controls.Add(this.TPArchHour);
-			this.panel1.Controls.Add(this.label13);
-			this.panel1.Controls.Add(this.TPArchDay);
 			this.panel1.Location = new System.Drawing.Point(204, 56);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(802, 29);
 			this.panel1.TabIndex = 67;
+			// 
+			// panel8
+			// 
+			this.panel8.BackColor = System.Drawing.Color.LightSteelBlue;
+			this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panel8.Controls.Add(this.label17);
+			this.panel8.Controls.Add(this.TPAlarm);
+			this.panel8.Location = new System.Drawing.Point(652, 2);
+			this.panel8.Name = "panel8";
+			this.panel8.Size = new System.Drawing.Size(146, 24);
+			this.panel8.TabIndex = 79;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.ForeColor = System.Drawing.Color.DarkBlue;
+			this.label17.Location = new System.Drawing.Point(2, 3);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(44, 13);
+			this.label17.TabIndex = 71;
+			this.label17.Text = "Аварий";
+			// 
+			// TPAlarm
+			// 
+			this.TPAlarm.CustomFormat = "DDMMYYYY";
+			this.TPAlarm.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.TPAlarm.Location = new System.Drawing.Point(46, 0);
+			this.TPAlarm.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
+			this.TPAlarm.Name = "TPAlarm";
+			this.TPAlarm.Size = new System.Drawing.Size(96, 20);
+			this.TPAlarm.TabIndex = 69;
+			this.TPAlarm.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
+			// 
+			// panel7
+			// 
+			this.panel7.BackColor = System.Drawing.Color.LightSteelBlue;
+			this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panel7.Controls.Add(this.label16);
+			this.panel7.Controls.Add(this.TPInterfer);
+			this.panel7.Location = new System.Drawing.Point(461, 2);
+			this.panel7.Name = "panel7";
+			this.panel7.Size = new System.Drawing.Size(186, 24);
+			this.panel7.TabIndex = 78;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.ForeColor = System.Drawing.Color.DarkBlue;
+			this.label16.Location = new System.Drawing.Point(2, 3);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(82, 13);
+			this.label16.TabIndex = 74;
+			this.label16.Text = "Вмешательств";
+			// 
+			// TPInterfer
+			// 
+			this.TPInterfer.CustomFormat = "DDMMYYYY";
+			this.TPInterfer.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.TPInterfer.Location = new System.Drawing.Point(86, 0);
+			this.TPInterfer.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
+			this.TPInterfer.Name = "TPInterfer";
+			this.TPInterfer.Size = new System.Drawing.Size(96, 20);
+			this.TPInterfer.TabIndex = 73;
+			this.TPInterfer.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
+			// 
+			// panel6
+			// 
+			this.panel6.BackColor = System.Drawing.Color.LightSteelBlue;
+			this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panel6.Controls.Add(this.label15);
+			this.panel6.Controls.Add(this.TPArchHour);
+			this.panel6.Location = new System.Drawing.Point(322, 2);
+			this.panel6.Name = "panel6";
+			this.panel6.Size = new System.Drawing.Size(132, 24);
+			this.panel6.TabIndex = 77;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.ForeColor = System.Drawing.Color.DarkBlue;
+			this.label15.Location = new System.Drawing.Point(3, 3);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(27, 13);
+			this.label15.TabIndex = 72;
+			this.label15.Text = "Час";
+			// 
+			// TPArchHour
+			// 
+			this.TPArchHour.CustomFormat = "DDMMYYYY";
+			this.TPArchHour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.TPArchHour.Location = new System.Drawing.Point(32, 0);
+			this.TPArchHour.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
+			this.TPArchHour.Name = "TPArchHour";
+			this.TPArchHour.Size = new System.Drawing.Size(96, 20);
+			this.TPArchHour.TabIndex = 70;
+			this.TPArchHour.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
+			// 
+			// panel5
+			// 
+			this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
+			this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panel5.Controls.Add(this.label13);
+			this.panel5.Controls.Add(this.TPArchDay);
+			this.panel5.Location = new System.Drawing.Point(172, 2);
+			this.panel5.Name = "panel5";
+			this.panel5.Size = new System.Drawing.Size(145, 24);
+			this.panel5.TabIndex = 76;
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.ForeColor = System.Drawing.Color.DarkBlue;
+			this.label13.Location = new System.Drawing.Point(6, 3);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(34, 13);
+			this.label13.TabIndex = 68;
+			this.label13.Text = "День";
+			// 
+			// TPArchDay
+			// 
+			this.TPArchDay.CustomFormat = "DDMMYYYY";
+			this.TPArchDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.TPArchDay.Location = new System.Drawing.Point(44, 0);
+			this.TPArchDay.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
+			this.TPArchDay.Name = "TPArchDay";
+			this.TPArchDay.Size = new System.Drawing.Size(96, 20);
+			this.TPArchDay.TabIndex = 67;
+			this.TPArchDay.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
 			// 
 			// BSetFirstDateArchs
 			// 
@@ -741,96 +864,12 @@
 			this.BSetFirstDateArchs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BSetFirstDateArchs.Location = new System.Drawing.Point(0, 0);
 			this.BSetFirstDateArchs.Name = "BSetFirstDateArchs";
-			this.BSetFirstDateArchs.Size = new System.Drawing.Size(176, 30);
+			this.BSetFirstDateArchs.Size = new System.Drawing.Size(168, 30);
 			this.BSetFirstDateArchs.TabIndex = 75;
 			this.BSetFirstDateArchs.Text = "Даты архивов применить";
 			this.BSetFirstDateArchs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.BSetFirstDateArchs.UseVisualStyleBackColor = false;
 			this.BSetFirstDateArchs.Click += new System.EventHandler(this.BSetFirstDateArchs_Click);
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.label17.Location = new System.Drawing.Point(656, 8);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(44, 13);
-			this.label17.TabIndex = 71;
-			this.label17.Text = "Аварий";
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.label16.Location = new System.Drawing.Point(464, 8);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(82, 13);
-			this.label16.TabIndex = 74;
-			this.label16.Text = "Вмешательств";
-			// 
-			// TPAlarm
-			// 
-			this.TPAlarm.CustomFormat = "DDMMYYYY";
-			this.TPAlarm.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.TPAlarm.Location = new System.Drawing.Point(700, 4);
-			this.TPAlarm.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
-			this.TPAlarm.Name = "TPAlarm";
-			this.TPAlarm.Size = new System.Drawing.Size(96, 20);
-			this.TPAlarm.TabIndex = 69;
-			this.TPAlarm.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
-			// 
-			// TPInterfer
-			// 
-			this.TPInterfer.CustomFormat = "DDMMYYYY";
-			this.TPInterfer.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.TPInterfer.Location = new System.Drawing.Point(548, 4);
-			this.TPInterfer.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
-			this.TPInterfer.Name = "TPInterfer";
-			this.TPInterfer.Size = new System.Drawing.Size(96, 20);
-			this.TPInterfer.TabIndex = 73;
-			this.TPInterfer.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.label15.Location = new System.Drawing.Point(328, 8);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(27, 13);
-			this.label15.TabIndex = 72;
-			this.label15.Text = "Час";
-			// 
-			// TPArchHour
-			// 
-			this.TPArchHour.CustomFormat = "DDMMYYYY";
-			this.TPArchHour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.TPArchHour.Location = new System.Drawing.Point(357, 4);
-			this.TPArchHour.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
-			this.TPArchHour.Name = "TPArchHour";
-			this.TPArchHour.Size = new System.Drawing.Size(96, 20);
-			this.TPArchHour.TabIndex = 70;
-			this.TPArchHour.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.label13.Location = new System.Drawing.Point(184, 8);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(34, 13);
-			this.label13.TabIndex = 68;
-			this.label13.Text = "День";
-			// 
-			// TPArchDay
-			// 
-			this.TPArchDay.CustomFormat = "DDMMYYYY";
-			this.TPArchDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.TPArchDay.Location = new System.Drawing.Point(224, 4);
-			this.TPArchDay.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
-			this.TPArchDay.Name = "TPArchDay";
-			this.TPArchDay.Size = new System.Drawing.Size(96, 20);
-			this.TPArchDay.TabIndex = 67;
-			this.TPArchDay.ValueChanged += new System.EventHandler(this.TPArchDay_ValueChanged);
 			// 
 			// LWorkTime
 			// 
@@ -978,7 +1017,7 @@
 			this.BTest1.Location = new System.Drawing.Point(8, 56);
 			this.BTest1.Name = "BTest1";
 			this.BTest1.Size = new System.Drawing.Size(116, 40);
-			this.BTest1.TabIndex = 18;
+			this.BTest1.TabIndex = 0;
 			this.BTest1.Text = "Старт\r\nперводвигатель";
 			this.BTest1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.BTest1.UseVisualStyleBackColor = true;
@@ -1004,7 +1043,7 @@
 			this.BStartScan.Location = new System.Drawing.Point(4, 24);
 			this.BStartScan.Name = "BStartScan";
 			this.BStartScan.Size = new System.Drawing.Size(70, 46);
-			this.BStartScan.TabIndex = 25;
+			this.BStartScan.TabIndex = 1;
 			this.BStartScan.Text = "Пуск";
 			this.BStartScan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.BStartScan.UseVisualStyleBackColor = true;
@@ -1030,7 +1069,7 @@
             0});
 			this.UDIntervalScan.Name = "UDIntervalScan";
 			this.UDIntervalScan.Size = new System.Drawing.Size(70, 20);
-			this.UDIntervalScan.TabIndex = 23;
+			this.UDIntervalScan.TabIndex = 2;
 			this.UDIntervalScan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.UDIntervalScan.Value = new decimal(new int[] {
             500,
@@ -1070,6 +1109,19 @@
 			this.CBErrors.TabIndex = 27;
 			this.toolTip1.SetToolTip(this.CBErrors, "e3e3");
 			this.CBErrors.MouseEnter += new System.EventHandler(this.CBErrors_MouseEnter);
+			// 
+			// CBStateLog
+			// 
+			this.CBStateLog.FormattingEnabled = true;
+			this.CBStateLog.Items.AddRange(new object[] {
+            "BelTranzDRV.log",
+            "Mem",
+            "NONE"});
+			this.CBStateLog.Location = new System.Drawing.Point(120, 4);
+			this.CBStateLog.Name = "CBStateLog";
+			this.CBStateLog.Size = new System.Drawing.Size(75, 21);
+			this.CBStateLog.TabIndex = 75;
+			this.CBStateLog.Visible = false;
 			// 
 			// TPDevices
 			// 
@@ -1203,7 +1255,14 @@
 			this.panel3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NTimeResp)).EndInit();
 			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.panel8.ResumeLayout(false);
+			this.panel8.PerformLayout();
+			this.panel7.ResumeLayout(false);
+			this.panel7.PerformLayout();
+			this.panel6.ResumeLayout(false);
+			this.panel6.PerformLayout();
+			this.panel5.ResumeLayout(false);
+			this.panel5.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.UDIntervalScan)).EndInit();
@@ -1294,6 +1353,10 @@
 		private System.Windows.Forms.Panel PanelAdd;
 		private System.Windows.Forms.Button BZipExtr;
 		private System.Windows.Forms.Panel PAddingPanel;
+		private System.Windows.Forms.Panel panel8;
+		private System.Windows.Forms.Panel panel7;
+		private System.Windows.Forms.Panel panel6;
+		private System.Windows.Forms.Panel panel5;
 	}
 }
 

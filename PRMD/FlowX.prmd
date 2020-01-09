@@ -1,4 +1,3 @@
-FlowX;AB01 FlowX;MT3;0 48;Single;float;5000;in;;;
-FlowX;AC01 FlowX;MT3;0 50;Single;float;5000;in;;;
-FlowX;LS03 FlowX;MT3;0 6;Single;int;5000;in;;;
-FlowX;HD01 FlowX;MT3;0 204;Single;int;5000;in;;;
+FlowX;N2_1;MT3;0 122;Single;float;500000;in;;;
+FlowX;CO2_1;MT3;0 120;Single;float;500000;in;;;
+FlowX;Density_1;MT3;0 108;Single;float;500000;in;;;

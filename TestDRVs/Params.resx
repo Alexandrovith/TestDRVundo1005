@@ -150,19 +150,24 @@
   <metadata name="FDOpenFl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="PathToMem.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BOpenFl.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABGdBTUEAALGPC/xhBQAAAAd0SU1FB90M
-        DhMVISLn1AAAAAFISURBVDhPYzhBIqCPht27d2dkZJiammpra+vr65ubm0dHRy9btgyiAg0wbNmyRU5O
-        TkZZwy2tIrRlnkfTQpu8dmNXP0tLyxkzZkBVIQGGnJwcQXn1SbvOLz3/pGXfLdc5x70WnQpbc941t7q4
-        uBiqCgkwpKena5raHL7/cu3V5+W7rgevPBe3+XLmnhuly7ZVVFRAVSEBhrq6OiUlJa+A4KZ5K1OXH0hb
-        d6Jo3cGGBSvrGxoyMzOhqpAAw7Fjx+Li4oDedXNzi4iISEpKSk1NjYqKqq2tXbp06axZs44fPw5VCwbQ
-        YF2/fn1DQ0NeXl5+fj6QsWjRoqNHj1ZWVtrY2AQHBwN1QpQBAb54OHLkSGlpqY6Ojr29PdCrO3bsAAoS
-        jrjt27dHRkbq6em5uLhMnjyZ2JhevHixl5fXvHnziNUAB7TWcOIEACQlCd6TOQIpAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAjpJREFUOE+lUl1oUmEYtmzrbwRBBYEYOaIfRS9CRDrgjUp4EcGh8Ae8EJwKpjCR
+        lNAOY9B93ojEoRQNoeZFkjIjFh1/KEpqxNZg1Nqg7WJRdNfa3t73cM5hVlTQAw/fe973fd7v+57zqf4F
+        vV5vhxSK+Pn7/0DTkGrkbuQe5H6J+6T1APKXEyg5DLStVms2HA5/MZvNX/V6/WeTybRmsViWfT7faqVS
+        EbBHI4uQu5A7RTGhXq+va7Va0IyeAudYCi5N8nB+4g4wsRtw1nEBrFbrRj6fnyEh9eM6NDAgGo3CwWMn
+        4eZ0H8r9FZh8vACOW11wFZ/B5Xt9cFy5BolE4hOKhqkfV7qaWhQTQqEQnDYz8PTdGtx/8xGuTs8BW30J
+        /gezEHk0D8nKQ0ilUq/kXWlFjohiQjabXdLpdJuuiyxM8FUI3p2BsakejE89Ae52Fa5zHEQikVUUkaGK
+        mRQj1apOp3PC7/cvonngdDrB7XZDIBCAYDAIXq8XMpkMlMvl74VCYa7b7Z4RRRKUgRgcqtVqLY7jXsRi
+        sdfxePwtxu+LxeJCu90+kk6nPzAMAyzLbuCweew/hzwqimVggn4POTyMJKPoXQxRTRCEw8lkcslgMGza
+        bDZA37aazeYK1kdF8d+AjXTfkUajcdzj8XwzGo1gt9u3crnculwkkrtEepV0EvG/bwfmqE9TKpWqLpdL
+        4Hn+uZiU6tuHDVAqK8AcbSReVRFJNQVy/ne1AWADTSLuRZJxZOafRQpUqh/BxXtrwh3JpgAAAABJRU5E
+        rkJggg==
 </value>
   </data>
-  <metadata name="panel1.DrawGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
 </root>

@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using AXONIM.CONSTS.LOG;
 using System.ServiceProcess;
+using HtmlAgilityPack;
 
 namespace TestDRVtransGas.TestsDifferent
 {
@@ -360,7 +361,7 @@ namespace TestDRVtransGas.TestsDifferent
 		int LenRecieve;
 
 		//_________________________________________________________________________0x2, 0x37, 0x2D, 0x36, 0x3A, 0x33, 0x31, 0x30, 0x5F, 0x31, 0x2E, 0x31, 0x28, 0x32, 0x30, 0x2E, 0x31, 0x36, 0x2A, 0x7B, 0x43, 0x29, 0x3, 0x6E  [[2]7-6:310_1.1(20.16*{C)[3]n
-		byte[] btaBufRX = { 1, 1, 1, 1, 2 };
+		byte[] btaBufRX = { 0xDD, 0x1C, 0xDD, 0x5D };
 		DateTime DT = DateTime.Now;
 		string[] asLines;
 		List<int> Li = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
@@ -371,9 +372,30 @@ namespace TestDRVtransGas.TestsDifferent
 			//int iVal = Global.BCDtoInt(0x25);
 			try
 			{
+				HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument ();
+				htmlDoc.Load (@"d:\archives\NG\localhost\dynparm_158.htm");
+
+				var NodePar = htmlDoc.DocumentNode.SelectNodes ("//tr").Descendants ().Where (x => x.Name == "td");
+				//HtmlNodeCollection links = NodePar.DocumentNode.SelectNodes (".//h2/a");
+				if (NodePar == null) return;
+				bool bReadVal = false;
+				foreach (HtmlNode link in NodePar)
+				{
+					TBResult.AppendText ($"{link.InnerText}{Environment.NewLine}");
+					//if (bReadVal)
+					//{
+					//	TBResult.AppendText ($"{link.InnerText}{Environment.NewLine}");
+					//	break;
+					//}
+					//if (link.InnerText.Equals ("Тип счётчика"))//zwkPrinzip
+					//{
+					//	bReadVal = true;
+					//	TBResult.AppendText ($"{link.InnerText}{Environment.NewLine}");
+					//}
+				}
 				//List<string> FileNames = new List<string> { "1", "2", "3" };
 				//TBResult.Text = string.Join (Environment.NewLine, FileNames);
-				GetParFromHTM ();
+				//GetParFromHTM ();
 				//Str_Byte_Str ();
 
 				//TestService ();

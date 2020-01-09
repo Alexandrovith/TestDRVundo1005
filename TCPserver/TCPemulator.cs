@@ -71,11 +71,10 @@ namespace TestDRVtransGas.TCPserver
 			TrRestartListener.Elapsed += TrRestartListener_Elapsed; // TODO: RESTORE?
 			TrRestartListener.AutoReset = false;
 
-			for (DEVICE dev = 0; dev < DEVICE.SIZE; dev++)
-			{
-				CBDev.Items.Add (dev);
-			}
-			CBDev.SelectedIndex = Properties.Settings.Default.iTCPdeviceCurr;
+			string[] asaDevs = Enum.GetNames (typeof (DEVICE));
+			CBDev.Items.AddRange (asaDevs);
+			string asD = Properties.Settings.Default.asTCPdeviceCurr;
+			CBDev.SelectedIndex = Array.IndexOf (asaDevs, Properties.Settings.Default.asTCPdeviceCurr);//iTCPdeviceCurr
 			CBDev_SelectedIndexChanged (this, null);
 
 			UDSizeBufOut.Value = Properties.Settings.Default.dmSizeBufOut;
@@ -120,7 +119,7 @@ namespace TestDRVtransGas.TCPserver
 		//_________________________________________________________________________
 		private void BStartStop_Click (object sender, EventArgs e)
 		{
-			Properties.Settings.Default.iTCPdeviceCurr = CBDev.SelectedIndex;
+			Properties.Settings.Default.asTCPdeviceCurr = CBDev.Text;
 			//Properties.Settings.Default.asIP = CBIP.Text;
 
 			if (State == EState.Listen || State == EState.Waiting)

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TParams));
 			this.GV = new System.Windows.Forms.DataGridView();
@@ -45,8 +46,11 @@
 			this.CBFlDev = new System.Windows.Forms.ComboBox();
 			this.BOpenFl = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.PathToMem = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.путьВПамятьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.GV)).BeginInit();
 			this.panel1.SuspendLayout();
+			this.PathToMem.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// GV
@@ -153,8 +157,9 @@
 			this.CBFlDev.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.CBFlDev.BackColor = System.Drawing.Color.LightGreen;
+			this.CBFlDev.ContextMenuStrip = this.PathToMem;
 			this.CBFlDev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CBFlDev.Location = new System.Drawing.Point(4, 4);
+			this.CBFlDev.Location = new System.Drawing.Point(52, 4);
 			this.CBFlDev.Name = "CBFlDev";
 			this.CBFlDev.Size = new System.Drawing.Size(891, 21);
 			this.CBFlDev.TabIndex = 4;
@@ -162,11 +167,11 @@
 			// 
 			// BOpenFl
 			// 
-			this.BOpenFl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BOpenFl.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BOpenFl.Image = ((System.Drawing.Image)(resources.GetObject("BOpenFl.Image")));
-			this.BOpenFl.Location = new System.Drawing.Point(895, 3);
+			this.BOpenFl.Location = new System.Drawing.Point(1, 1);
 			this.BOpenFl.Name = "BOpenFl";
-			this.BOpenFl.Size = new System.Drawing.Size(24, 23);
+			this.BOpenFl.Size = new System.Drawing.Size(50, 29);
 			this.BOpenFl.TabIndex = 5;
 			this.BOpenFl.UseVisualStyleBackColor = true;
 			this.BOpenFl.Click += new System.EventHandler(this.BOpenFl_Click);
@@ -183,6 +188,21 @@
 			this.panel1.Size = new System.Drawing.Size(950, 36);
 			this.panel1.TabIndex = 6;
 			// 
+			// PathToMem
+			// 
+			this.PathToMem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.путьВПамятьToolStripMenuItem});
+			this.PathToMem.Name = "PathToMem";
+			this.PathToMem.Size = new System.Drawing.Size(181, 48);
+			this.PathToMem.Text = "Путь - в память";
+			// 
+			// путьВПамятьToolStripMenuItem
+			// 
+			this.путьВПамятьToolStripMenuItem.Name = "путьВПамятьToolStripMenuItem";
+			this.путьВПамятьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.путьВПамятьToolStripMenuItem.Text = "Путь - в память";
+			this.путьВПамятьToolStripMenuItem.Click += new System.EventHandler(this.ПутьВПамятьToolStripMenuItem_Click);
+			// 
 			// TParams
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +215,7 @@
 			this.Size = new System.Drawing.Size(950, 689);
 			((System.ComponentModel.ISupportInitialize)(this.GV)).EndInit();
 			this.panel1.ResumeLayout(false);
+			this.PathToMem.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -216,5 +237,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn INorOUT;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NameP;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NamePrus;
+		private System.Windows.Forms.ContextMenuStrip PathToMem;
+		private System.Windows.Forms.ToolStripMenuItem путьВПамятьToolStripMenuItem;
 	}
 }

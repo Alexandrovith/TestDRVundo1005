@@ -18,7 +18,7 @@
       <Value Profile="(Default)">0 2</Value>
     </Setting>
     <Setting Name="asParameterName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">TempParName;DevDTSet</Value>
+      <Value Profile="(Default)">DevDTSet;CO2;N2;Density;Rst</Value>
     </Setting>
     <Setting Name="iDataWritePar" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -75,13 +75,13 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">127.0.0.1;localhost;192.168.226.1;192.168.111.1</Value>
+      <Value Profile="(Default)">192.168.1.23;127.0.0.1;localhost;192.168.226.1;192.168.111.1</Value>
     </Setting>
     <Setting Name="iPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">503</Value>
     </Setting>
-    <Setting Name="iTCPdeviceCurr" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="asTCPdeviceCurr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vympel500</Value>
     </Setting>
     <Setting Name="iIntervalScan" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">500</Value>
@@ -105,7 +105,7 @@
       <Value Profile="(Default)">38400</Value>
     </Setting>
     <Setting Name="asIPserver" Type="System.String" Scope="User">
-      <Value Profile="(Default)">127.0.0.1</Value>
+      <Value Profile="(Default)">192.168.1.23</Value>
     </Setting>
     <Setting Name="dmSizeBufOut" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">400</Value>

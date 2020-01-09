@@ -72,22 +72,54 @@ namespace TestDRVtransGas
 
 			Devices = new TDevices (TPDevices, this);
 			// Фирст даты архивов 
-			if (Properties.Settings.Default.DTArchDay > TPArchDay.MinDate)
+			DateTime DTnow = DateTime.Now.AddHours (-1);
+			DateTime DTsubDelta = DateTime.Now.AddDays (-10);
+			DateTime DTmin = DateTime.Now.AddYears (-5);
+
+			if (Properties.Settings.Default.DTArchDay > DTmin)
 				TPArchDay.Value = Properties.Settings.Default.DTArchDay;
 			else
-				Properties.Settings.Default.DTArchDay = TPArchDay.Value;
-			if (Properties.Settings.Default.DTArchHour > TPArchHour.MinDate)
+			{
+				TPArchDay.Value = DTsubDelta;
+				Properties.Settings.Default.DTArchDay = DTsubDelta;
+			}
+			if (Properties.Settings.Default.DTArchHour > DTmin)
 				TPArchHour.Value = Properties.Settings.Default.DTArchHour;
 			else
-				Properties.Settings.Default.DTArchHour = TPArchHour.Value;
-			if (Properties.Settings.Default.DTInterfer > TPInterfer.MinDate)
+			{
+				TPArchHour.Value = DTsubDelta;
+				Properties.Settings.Default.DTArchHour = DTsubDelta;
+			}
+			if (Properties.Settings.Default.DTInterfer > DTmin)
 				TPInterfer.Value = Properties.Settings.Default.DTInterfer;
 			else
-				Properties.Settings.Default.DTInterfer = TPInterfer.Value;
-			if (Properties.Settings.Default.DTAlarm > TPAlarm.MinDate)
+			{
+				TPInterfer.Value = DTsubDelta;
+				Properties.Settings.Default.DTInterfer = DTsubDelta;
+			}
+			if (Properties.Settings.Default.DTAlarm > DTmin)
 				TPAlarm.Value = Properties.Settings.Default.DTAlarm;
 			else
-				Properties.Settings.Default.DTAlarm = TPAlarm.Value;
+			{
+				TPAlarm.Value = DTsubDelta;
+				Properties.Settings.Default.DTAlarm = DTsubDelta;
+			}
+			//if (Properties.Settings.Default.DTArchDay > TPArchDay.MinDate)
+			//	TPArchDay.Value = Properties.Settings.Default.DTArchDay;
+			//else
+			//	Properties.Settings.Default.DTArchDay = TPArchDay.Value;
+			//if (Properties.Settings.Default.DTArchHour > TPArchHour.MinDate)
+			//	TPArchHour.Value = Properties.Settings.Default.DTArchHour;
+			//else
+			//	Properties.Settings.Default.DTArchHour = TPArchHour.Value;
+			//if (Properties.Settings.Default.DTInterfer > TPInterfer.MinDate)
+			//	TPInterfer.Value = Properties.Settings.Default.DTInterfer;
+			//else
+			//	Properties.Settings.Default.DTInterfer = TPInterfer.Value;
+			//if (Properties.Settings.Default.DTAlarm > TPAlarm.MinDate)
+			//	TPAlarm.Value = Properties.Settings.Default.DTAlarm;
+			//else
+			//	Properties.Settings.Default.DTAlarm = TPAlarm.Value;
 			SetNewDTreadArch ();
 
 			Params = new TParams (TPParams, this);
@@ -172,9 +204,9 @@ namespace TestDRVtransGas
 			TCPtoComPort = new CTCPtoComPort (this);
 			TCPtoComPort.Parent = TPTCPtoComPort;
 
-						// Этот блок всегда в конце !!! 
-						// Вносить сюда новые UserControls
-						// UserControls yнаследовать от IUserControls
+			// Этот блок всегда в конце !!! 
+			// Вносить сюда новые UserControls
+			// UserControls yнаследовать от IUserControls
 			IUserControls[] ControlsListCInit = { Devices, Params, TestExch, TestsDiff, TCPtoTCP, TCPtoComPort };
 			ControlsList = ControlsListCInit;
 		}
@@ -183,10 +215,10 @@ namespace TestDRVtransGas
 		{
 			get
 			{
-				return Foo.Properties.VersionInfo.BuildDate.ToString("u").Replace('Z', (char)0);
-				//Assembly asm = Assembly.GetExecutingAssembly ();//.GetName().Version.ToString();
-				//FileVersionInfo fvi = FileVersionInfo.GetVersionInfo (asm.Location);
-				//return fvi.ProductVersion;//.FileVersion;
+				//return Foo.Properties.VersionInfo.BuildDate.ToString("u").Replace('Z', (char)0);
+				Assembly asm = Assembly.GetExecutingAssembly ();//.GetName().Version.ToString();
+				FileVersionInfo fvi = FileVersionInfo.GetVersionInfo (asm.Location);
+				return fvi.ProductVersion;//.FileVersion;
 			}
 		}
 		//_________________________________________________________________________
@@ -754,7 +786,7 @@ namespace TestDRVtransGas
 			{
 				for (int i = 0; i < UDRepeatWrite.Value; i++)
 				{
-					iID = WriteParams (iID, CBDeviceWr.Text + i, (i + 1).ToString ());
+					iID = WriteParams (iID, i, CBDeviceWr.Text/* + i*/, (i + 1).ToString ());
 					Thread.Sleep ((int)NUDIntervalSendFHPDev.Value);
 				}
 			}
@@ -767,18 +799,18 @@ namespace TestDRVtransGas
 		/// <param name="asDevice">Наименование объекта, на котором прибор</param>
 		/// <param name="asDataByWr">Значение параметра, в соответствии с типом (напр 1,23 или 5)</param>
 		/// <returns>ID параметра, отправленного последним</returns>
-		private int WriteParams (int iID, string asDevice = "", string asDataByWr = "")
+		private int WriteParams (int iID, int i, string asDevice = "", string asDataByWr = "")
 		{
-			string[] asaCBData = { "WrFHP 480", "WrFHP 481", "WrFHP 482" };
-			string[] asaCBParameterName = { "WrCO2", "WrN2", "WrRc" };
-			int i = 0;
-			foreach (var Data in asaCBData)
-			{
-				WriteToDev (iID++, Data, asaCBParameterName[i], asDevice, asDataByWr);
-				i++;
-			}
-
-			return iID;
+			string[] asaCBData_Addr = { "0 120", "0 122", "0 108" };
+			string[] asaCBParameterName = { "CO2_1", "N2_1", "Density_1" };
+			WriteToDev (iID, asaCBData_Addr[i], asaCBParameterName[i], asDevice, asDataByWr);
+			//int i = 0;
+			//foreach (var Data in asaCBData)
+			//{
+			//	WriteToDev (iID++, Data, asaCBParameterName[i], asDevice, asDataByWr);
+			//	i++;
+			//}
+			return ++iID;
 		}
 		//_________________________________________________________________________
 		enum EReverce { NO, YES, TWO_BITE }

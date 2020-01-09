@@ -24,6 +24,7 @@ namespace TestDRVtransGas.TCPserver
 		//xxxxxxxxxxxxxxxxxxxxx    П О С Т О Я Н Н Ы Е      xxxxxxxxxxxxxxxxxxxxxxx
 
 		byte[] btaRequestFactory = { 2, 0x11, 0x45, 0x57, 0xF2, 0x4F, 0x1E, 0x1, 0x44, 0x1, 0x0, 0x0, 0x0, 0x10, 0x1, 0xA, 0x1, 0x0, 0xB4, 0x56, 0x58, 0x8F, 0x62, 0x70, 0x74, 0x66, 0x67, 0x5F, 0x76, 0x34, 0x5F, 0x31, 0x20, 0x31, 0x32, 0x30, 0x37, 0x32, 0x30, 0x31, 0x32, 0x0, 0x39, 0x30, 0x30, 0x37, 0x32, 0x0, 0x0, 0x1, 0x0, 0x3, 0x0, 0xC, 0x0, 0x12, 0x9F, 0xD, 0x0, 0x0, 0x0, 0x0, 0x7, 0xE3, 0x1, 0x3, 0xF, 0x6, 0x30, 0x4, 0x2, 0x67, 0x20 };
+		uint uiDateArchAlarmBeg;
 
 		//xxxxxxxxxxxxxxxxxxxxx    П Е Р Е М Е Н Н Ы Е      xxxxxxxxxxxxxxxxxxxxxxx
 
@@ -32,12 +33,21 @@ namespace TestDRVtransGas.TCPserver
 		{
 			iBeginData = 0;
 			uiDateArchBeg = Global.DateTimeAsInt (new DateTime (2019, 5, 29, 5, 0, 0));
+
+			int iNumEv = 0; int CodeEv = 0; DateTime DTalarm = DateTime.Now.AddMonths (-2);//(-(QUANT_EV + 1));
+			uiDateArchAlarmBeg = Global.DateTimeAsInt (DTalarm);
+			int[] CodePar = { 0,0,1,0x40,4098,4143,0,0,1,2,1,2,1,3,1,3,1,5,1,7,0,1,5,3,2,4,1,2,3};
+			for (int i = 0; i < QUANT_EV; i++)
+			{
+				oRows[i] = new TRowAlarm (iNumEv++, CodeEv++, DTalarm, CodePar[i], ushort.MaxValue);
+				DTalarm = DTalarm.AddMinutes (1);
+			}
 		}
 		//_________________________________________________________________________
 
 		object oПолучОтвет = new object ();
-		int iNumEw = 0;
-		private int iQuantEvAlarm = oRows.Length;
+		int iCurrEw = 0;
+		private int iQuantEvAlarm = QUANT_EV;
 		//2 11 45 57 F2 4F 1E 1 44 1 0 0 0 10 1 A 1 0 B4 56 58 8F 62 70 74 66 67 5F 76 34 5F 31 20 31 32 30 37 32 30 31 32 0 39 30 30 37 32 0 0 1 0 3 0 C 0 12 9F D 0 0 0 0 7 E3 1 3 F 6 30 4 2 67 20
 		override public bool GetAnswer (ref byte[] btaTX, byte[] btaRX, ref int iNumPartOfAnswerBySend)
 		{
@@ -49,24 +59,37 @@ namespace TestDRVtransGas.TCPserver
 				iPosTX = (int)MODBUS3_ANSW.Data;
 
 				ushort usAddrReg = Global.ToUInt16rev (btaRX, (int)MODBUS3_RESP.RegStartH);
-				if (usAddrReg == 0x2003 && btaRX[(int)MODBUS3_RESP.Func] == 3)					// Фармавання архiваў H/D 
+				if (usAddrReg == 0x2001 && btaRX[(int)MODBUS3_RESP.Func] == 16)
+				{
+					Parent.OutToWind ("Запись типа архива " + Global.ByteArToStr (btaRX));
+					btaTX = new byte[(int)MODBUS16_ANSW.SIZE];
+					iSizeByCRC = btaTX.Length - 2;
+					iPosTX = (int)MODBUS16_ANSW.CRCh;
+				}
+				else if (usAddrReg == 0x2003 && btaRX[(int)MODBUS3_RESP.Func] == 3)          // Фармавання архiваў H/D 
 				{
 					iPosTX = (int)CArchVympel.EAnswer.Data;
-					int iArch = btaRX[(int)CArchVympel.ERequest.IDarch + 1];
-					int iQuantRow = (Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.QuantRegRd) - 3) /
-														CArchVympel.iaQuantRegInRec[iArch];
-					int iQuantBytes = iQuantRow * CArchVympel.iaQuantRegInRec[iArch] * 2;
-					btaTX = new byte[(int)CArchVympel.EAnswer.Data + iQuantBytes + 2];    // Добавлять 3 регистра? 
-					btaTX[(int)CArchVympel.EAnswer.QuantBitesRd] = (byte)(iQuantBytes + 6);
+					int iQuantRow = 1;
+					int iQuantBytes = iQuantRow * CArchUFG_F.QUANT_REG_RD_HD * 2;
+					btaTX = new byte[(int)MODBUS3_ANSW.Data + iQuantBytes + 2];    // Добавлять 3 регистра? 
+					btaTX[(int)MODBUS3_ANSW.NumByteData] = (byte)(iQuantBytes + 6);
 
 					FillArch (ref iPosTX, btaRX, ref btaTX, iQuantRow);
 					iSizeByCRC = btaTX.Length - 2;
-				}
-				else if (btaRX[(int)MODBUS3_RESP.Func] == 3 && (usAddrReg >= 0x2200 && usAddrReg <= 0x220E))	// Аварый  
+				}                                                                       // Аварый  
+				else if ((btaRX[(int)MODBUS16_RESP.Func] == 16 && usAddrReg == 0x2200) || btaRX[(int)MODBUS3_RESP.Func] == 3 && (usAddrReg == 0x2201 || usAddrReg == 0x2202))
 				{
 					//int iRegStart = Global.ToUInt16rev (btaRX, (int)MODBUS3_RESP.RegStartH);
-					if (usAddrReg == 0x2201)                      // Чтение кол-ва записей 
+					if (usAddrReg == 0x2200)
 					{
+						Parent.OutToWind ("Запись: Номер дня/месяца");
+						btaTX = new byte[(int)MODBUS16_ANSW.SIZE];
+						iSizeByCRC = btaTX.Length - 2;
+						iPosTX = (int)MODBUS16_ANSW.CRCh;
+					}
+					else if (usAddrReg == 0x2201)                      // Чтение кол-ва записей 
+					{
+						Parent.OutToWind ("Чтение кол-ва записей");
 						btaTX = new byte[(int)MODBUS3_ANSW.Data + 4];
 						btaTX[iPosTX] = 0;
 						btaTX[++iPosTX] = (byte)iQuantEvAlarm;
@@ -77,24 +100,24 @@ namespace TestDRVtransGas.TCPserver
 						FillAlarm (btaRX, ref btaTX);
 						iPosTX = btaTX.Length - 2;
 						btaTX[(int)MODBUS3_ANSW.NumByteData] = (byte)(btaTX.Length - (int)MODBUS3_ANSW.Data - 2);
+						Parent.OutToWind ("Alarm data");
 					}
 					else
 					{
-
 					}
 					iSizeByCRC = btaTX.Length - 2;
 				}
-				else																								// Фармавання дыскрэтных параметраў 
+				else                                                // Фармавання дыскрэтных параметраў 
 				{
-					if (btaRX[(int)MODBUS3_RESP.Func] == 16)					// Запіс параметраў 
+					if (btaRX[(int)MODBUS3_RESP.Func] == 16)          // Запіс параметраў 
 					{
 						Parent.OutToWind ("Запіс параметраў", false);
 						btaTX = new byte[(int)MODBUS16_ANSW.SIZE];
 						iSizeByCRC = btaTX.Length - 2;
 						iPosTX = (int)MODBUS16_ANSW.CRCh;
 						Parent.OutToWind ("ЗАПІС: " + Global.ByteArToStr (btaRX));
-          }
-					else											// Чтение мгновенных 
+					}
+					else                      // Чтение мгновенных 
 					{
 						Parent.OutToWind ("Имгненныя", false);
 						ushort usQuantityOfRegisters = Global.ToUInt16rev (btaRX, (int)MODBUS3_RESP.NumRegH);
@@ -117,21 +140,26 @@ namespace TestDRVtransGas.TCPserver
 						}
 					}
 				}
-				if (btaTX.Length < (int)MODBUS3_ANSW.Func)					// Если сбой заполнения данными 
+				if (btaTX.Length < (int)MODBUS3_ANSW.Func)          // Если сбой заполнения данными 
 				{
 					btaTX = Global.EncodingCurr.GetBytes ("Сбой заполнения данными");
 					Parent.OutToWind ("СБОЙ ЗАПОЛНЕНИЯ ДАННЫМИ");
-          return false;
+					return false;
 				}
 				for (int i = 0; i <= (int)MODBUS3_ANSW.Func; i++)
 				{
 					btaTX[i] = btaRX[i];
 				}
+				if (bErrPut)
+				{
+					bErrPut = false;
+					btaTX[(int)MODBUS3_ANSW.Func] += 0x80;
+				}
 				ushort usCRC = Global.CRC (btaTX, iSizeByCRC, btaTX.Length, Global.Table8005, 0xFFFF, (ushort)iBeginBuf);
 				byte[] btaCRC = BitConverter.GetBytes (usCRC);
 				btaTX[iPosTX++] = btaCRC[0];
 				btaTX[iPosTX++] = btaCRC[1];
-				
+
 				ChangeVal ();
 				//Thread.Sleep (12000);
 				return false;
@@ -141,95 +169,99 @@ namespace TestDRVtransGas.TCPserver
 		class TDateTime
 		{
 			public byte[] Val = new byte[8];
-			public TDateTime(int ms, int cc, int mm, int hh, ushort YYYY, int MM, int DD)
+			public TDateTime (int ms, int ss, int mm, int hh, ushort YYYY, int MM, int DD)
 			{
 				int i = 0;
-				Val[i] = (byte)ms;
-				Val[++i] = (byte)cc;
-				Val[++i] = (byte)mm;
-				Val[++i] = (byte)hh;
+				Val[i] = (byte)DD;
+				Val[++i] = (byte)MM;
 				Val[++i] = (byte)(YYYY >> 8);
 				Val[++i] = (byte)YYYY;
-				Val[++i] = (byte)MM;
-				Val[++i] = (byte)DD;
+				Val[++i] = (byte)hh;
+				Val[++i] = (byte)mm;
+				Val[++i] = (byte)ss;
+				Val[++i] = (byte)ms;
 			}
 		}
 		class TRowAlarm
 		{
-			static public int iSize = 24;
-			public byte[] Val = new byte[iSize];
-			public TRowAlarm(int NumEv, int CodeEv, TDateTime DT, int CodePar, params ushort[] Data)
+			public const int iSize = 26;
+			private byte[] Value = new byte[iSize];
+			DateTime DT;
+			int iPosDT;
+			int iNumEv;
+
+			public TRowAlarm (int NumEv, int CodeEv, DateTime DT, int CodePar, params ushort[] Data)
 			{
-				int i = 0;
-				Val[i] = (byte)0;
-				Val[++i] = (byte)0;
-				Val[++i] = (byte)0;
-				Val[++i] = (byte)NumEv;
-				Val[++i] = (byte)0;
-				Val[++i] = (byte)CodeEv;
-				Global.Append (DT.Val, 0, Val, ++i, DT.Val.Length);
-				i += DT.Val.Length;
-				Val[i] = (byte)0;
-				Val[++i] = (byte)CodePar;
+				iNumEv = NumEv;
+				int i = -1;
+				//Val[i] = (byte)0;								// Кол-во событий в дне/месяце
+				//Val[++i] = (byte)QUANT_EV;			// Кол-во событий в дне/месяце
+				Value[++i] = (byte)0;             // Номер события в месяце
+				Value[++i] = (byte)0;             // Номер события в месяце
+				Value[++i] = (byte)0;             // Номер события в месяце
+				Value[++i] = (byte)NumEv;         // Номер события в месяце
+				Value[++i] = (byte)0;             // Код события
+				Value[++i] = (byte)CodeEv;        // Код события
+				this.DT = DT;
+				iPosDT = i + 1;
+				//Global.Append (DT.Val, 0, Value, ++i, DT.Val.Length);   // Дата/Время записи
+				i += 8;// DT.Val.Length;
+				Value[i] = (byte)0;               // Код параметра
+				Value[++i] = (byte)CodePar;       // Код параметра
 				int Pos = 0;
-				while (Data[Pos] != ushort.MaxValue)
+				while (Data[Pos] != ushort.MaxValue)  // Данные
 				{
-					Val[++i] = (byte)Data[Pos++];
-				}	
+					Value[++i] = (byte)Data[Pos++];
+				}
+			}
+			//.........................................................................
+			public byte[] GetVal ()
+			{
+				// При запросе - установим текущую дату плюс iNumEv сек
+				DateTime DTnow = DateTime.Now;
+				if (DT.Month < DTnow.Month)
+					DT = DTnow.AddSeconds (iNumEv);
+
+				TDateTime DTConv = new TDateTime (DT.Millisecond, DT.Second, DT.Minute, DT.Hour, (ushort)DT.Year, DT.Month, DT.Day);
+				Global.Append (DTConv.Val, 0, Value, iPosDT, DTConv.Val.Length);   // Дата/Время записи очередное ввели 
+				DT.AddSeconds (QUANT_EV + 2);  // Переносим время по этой записи на QUANT_EV + 2 сек
+				return Value;
 			}
 		}
 		//.........................................................................
+		
+		const int QUANT_EV = 17;
+		TRowAlarm[] oRows = new TRowAlarm[QUANT_EV];
+		bool bErrPut;
+		int iCountForErrPut;
 
-		static TRowAlarm[] oRows = { new TRowAlarm (1, 1, new TDateTime(1,1,1,1,(ushort)2015,1,1), 0, ushort.MaxValue),
-													 new TRowAlarm (2, 2, new TDateTime(2,2,2,2,(ushort)2016,2,2), 0, ushort.MaxValue),
-													 new TRowAlarm (3, 3, new TDateTime(3,3,3,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (4, 3, new TDateTime(3,4,3,3,(ushort)2017,3,3), 0x40, ushort.MaxValue),
-													 new TRowAlarm (5, 4, new TDateTime(3,5,3,3,(ushort)2017,3,3), 4098, ushort.MaxValue),
-													 new TRowAlarm (6, 4, new TDateTime(3,6,3,3,(ushort)2017,3,3), 4143, ushort.MaxValue),
-													 new TRowAlarm (7, 5, new TDateTime(3,7,3,3,(ushort)2017,3,3), 0, ushort.MaxValue),
-													 new TRowAlarm (8, 6, new TDateTime(3,8,3,3,(ushort)2017,3,3), 0, ushort.MaxValue),
-													 new TRowAlarm (9, 7, new TDateTime(3,9,3,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (10, 7, new TDateTime(4,3,3,3,(ushort)2017,3,3), 2, ushort.MaxValue),
-													 new TRowAlarm (11, 8, new TDateTime(5,3,3,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (12, 8, new TDateTime(6,3,3,3,(ushort)2017,3,3), 2, ushort.MaxValue),
-													 new TRowAlarm (13, 9, new TDateTime(7,3,3,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (14, 9, new TDateTime(8,3,3,3,(ushort)2017,3,3), 3, ushort.MaxValue),
-													 new TRowAlarm (15, 10, new TDateTime(9,3,3,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (16, 10, new TDateTime(3,3,4,3,(ushort)2017,3,3), 3, ushort.MaxValue),
-													 new TRowAlarm (17, 11, new TDateTime(3,3,5,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (18, 11, new TDateTime(3,3,6,3,(ushort)2017,3,3), 5, ushort.MaxValue),
-													 new TRowAlarm (19, 12, new TDateTime(3,3,7,3,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (20, 12, new TDateTime(3,3,8,3,(ushort)2017,3,3), 7, ushort.MaxValue),
-													 new TRowAlarm (21, 13, new TDateTime(3,3,9,3,(ushort)2017,3,3), 0, ushort.MaxValue),
-													 new TRowAlarm (22, 13, new TDateTime(3,3,3,4,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (23, 14, new TDateTime(3,3,3,5,(ushort)2017,3,3), 5, ushort.MaxValue),
-													 new TRowAlarm (24, 14, new TDateTime(3,3,3,6,(ushort)2017,3,3), 3, ushort.MaxValue),
-													 new TRowAlarm (25, 15, new TDateTime(3,3,3,7,(ushort)2017,3,3), 2, ushort.MaxValue),
-													 new TRowAlarm (26, 15, new TDateTime(3,3,3,8,(ushort)2017,3,3), 4, ushort.MaxValue),
-													 new TRowAlarm (27, 16, new TDateTime(3,3,3,9,(ushort)2017,3,3), 1, ushort.MaxValue),
-													 new TRowAlarm (28, 16, new TDateTime(3,3,3,10,(ushort)2017,3,3), 2, ushort.MaxValue),
-													 new TRowAlarm (29, 16, new TDateTime(3,3,3,20,(ushort)2017,3,3), 3, ushort.MaxValue),
-			};
 		void FillAlarm (byte[] btaRX, ref byte[] btaTX)
 		{
 			btaTX = new byte[(int)MODBUS3_ANSW.Data + TRowAlarm.iSize + 2];// * iQuantEvAlarm
 			int i = (int)MODBUS3_ANSW.Data;
 
-			if (++iNumEw >= oRows.Length)
+			if (++iCurrEw >= QUANT_EV)
 			{
-				iNumEw = 0;
 				byte[] btZero = { 0 };
 				Global.Append (btZero, 0, btaTX, i, 1);
 			}
 			else
 			{
-				Global.Append (oRows[iNumEw].Val, 0, btaTX, i, TRowAlarm.iSize);
-			}
-			//foreach (var item in oRows)
-			//{
-			//	 Global.Append (item.Val, 0, btaTX, i, TRowAlarm.iSize);
-			//	i += TRowAlarm.iSize;
-			//}		
+				Global.Append (oRows[iCurrEw].GetVal(), 0, btaTX, i, TRowAlarm.iSize);
+				if (++iCountForErrPut % 4 == 0)
+				{                       // Выдача сообщения об ошибке 
+					bErrPut = true;
+					iCurrEw--;
+				}
+				else
+				{
+					bErrPut = false;
+					if (iCurrEw >= QUANT_EV - 1)
+					{
+						iCurrEw = 0;
+					}
+				}
+			}	
 		}
 		//_________________________________________________________________________
 		void FillHoldingReg (byte[] btaRX, ref byte[] btaTX, int iQuantReg)
@@ -365,7 +397,7 @@ namespace TestDRVtransGas.TCPserver
 		{
 			const uint uiDateInc = 60 * 60;
 			uint uiBeginRec = Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.BeginRec);
-			uint uiDateArch = uiDateArchBeg + uiDateInc * uiBeginRec;
+			uint uiDateArch = uiDateArchAlarmBeg + uiDateInc * uiBeginRec;
 //#if LOG_VYMPEL
 //			Global.LogWriteLine ("BeginRec " + uiBeginRec);
 //			#endif

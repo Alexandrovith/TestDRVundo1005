@@ -34,7 +34,7 @@ namespace TestDRVtransGas.TCPserver
 		public CDevVympel (FTCPserver Prnt) : base (Prnt)
 		{
 			iBeginData = 0;
-			uiDateArchBeg = Global.DateTimeAsInt (new DateTime (2018, 9, 14, 5, 0, 0));
+			uiDateArchBeg = Global.DateTimeAsInt (DateTime.Now.AddDays(-10));
 		}
 		//_________________________________________________________________________
 
@@ -53,12 +53,12 @@ namespace TestDRVtransGas.TCPserver
 					iPosTX = (int)CArchVympel.EAnswer.Data;
 					int iArch = btaRX[(int)CArchVympel.ERequest.IDarch + 1];
 					int iQuantRow = (Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.QuantRegRd) - 3) /
-														CArchVympel.iaQuantRegInRec[iArch];
-					btaTX = new byte[(int)CArchVympel.EAnswer.Data + iQuantRow * CArchVympel.iaQuantRegInRec[iArch] * 2 + 2];    // Добавлять 3 регистра? 
+														CArchVympel.iaQuantRegByRow[iArch];
+					btaTX = new byte[(int)CArchVympel.EAnswer.Data + iQuantRow * CArchVympel.iaQuantRegByRow[iArch] * 2 + 2];    // Добавлять 3 регистра? 
 
 					FillArch (ref iPosTX, btaRX, ref btaTX, iQuantRow);
 
-					int iQuantBytes = iPosTX + 2 - (int)CArchVympel.EAnswer.CodeServiceFunc;    // iQuantRow * CArchVympel.iaQuantRegInRec[iArch] * 2;
+					int iQuantBytes = iPosTX + 2 - (int)CArchVympel.EAnswer.CodeServiceFunc;    // iQuantRow * CArchVympel.iaQuantRegByRow[iArch] * 2;
 					if (iPosTX == (int)CArchVympel.EAnswer.Data)
 					{
 						if (iaCounterZeroData[(int)Arch] == 1)
@@ -213,17 +213,27 @@ namespace TestDRVtransGas.TCPserver
 		private void FIllArchAlarm (ref int iPosData, byte[] btaRX, ref byte[] btaTX, int iQuantRow)
 		{
 			const uint uiDateInc = 60 * 60;
+			DateTime DTnow = DateTime.Now;
+			uint uiDateNow = Global.DateTimeAsInt (DTnow);
 			uint uiBeginRec = Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.BeginRec);
 			uint uiDateArch = uiDateArchBeg + uiDateInc * uiBeginRec;
-			uint uiDateNow = Global.DateTimeAsInt (DateTime.Now);
 
-			for (int iRow = 0; iRow < iQuantRow; iRow++)
+			int uiQuantRowOut = (int)((uiDateNow - uiDateArch) / uiDateInc);
+			if (uiQuantRowOut >= iQuantRow)
+				uiQuantRowOut = iQuantRow;
+			else uiQuantRowOut = (uiQuantRowOut % (iQuantRow + 1));
+
+			string asDTArch = "";
+			if (uiQuantRowOut < 0)
+				uiQuantRowOut = 0;
+			for (int iRow = 0; iRow < uiQuantRowOut; iRow++)
 			{
 				if (uiDateArch >= uiDateNow)
 					break;
 				// Дата и время 
 				//Global.LogWriteLine (Global.IntToDateTime (uiDateArch).ToString());
         Global.AppendRev (BitConverter.GetBytes (uiDateArch), 0, btaTX, iPosData, 4);
+				asDTArch += Global.IntToDateTime (uiDateArch) + ";";
 				uiDateArch += (uint)uiDateInc;
 				iPosData += 4;
 				// Код тревоги 
@@ -238,24 +248,35 @@ namespace TestDRVtransGas.TCPserver
 				btaTX[iPosData + 3] = (byte)2;
 				iPosData += 4;
 			}
+			Parent.OutToWind (asDTArch);
+			Global.AppendRev (BitConverter.GetBytes (uiQuantRowOut * CArchVympel.iaQuantRegByRow[(int)CArchVympel.EArchID.Alarm] * 2), 0, btaTX, (int)CArchVympel.ERequest.NumByteData, 1);
 		}
 		//_________________________________________________________________________
 
 		uint uiCodeInterfer = 0x101;
+
 		private void FIllArchInterfer (ref int iPosData, byte[] btaRX, ref byte[] btaTX, int iQuantRow)
 		{
 			const uint uiDateInc = 30 * 60;
 			uint uiBeginRec = Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.BeginRec);
 			uint uiDateArch = uiDateArchBeg + uiDateInc * uiBeginRec;
 			uint uiDateNow = Global.DateTimeAsInt (DateTime.Now);
+			int uiQuantRowOut = (int)((uiDateNow - uiDateArch) / uiDateInc);
+			if (uiQuantRowOut >= iQuantRow)
+				uiQuantRowOut = iQuantRow;
+			else uiQuantRowOut = (uiQuantRowOut % (iQuantRow + 1));
 
-			for (int iRow = 0; iRow < iQuantRow; iRow++)
+			if (uiQuantRowOut < 0)
+				uiQuantRowOut = 0;
+			string asDTArch = "";
+			for (int iRow = 0; iRow < uiQuantRowOut; iRow++)
 			{
 				if (uiDateArch >= uiDateNow)
 					break;
 				// Дата и время 
 				//Global.LogWriteLine (Global.IntToDateTime (uiDateArch).ToString ());
 				Global.AppendRev (BitConverter.GetBytes (uiDateArch), 0, btaTX, iPosData, 4);
+				asDTArch += Global.IntToDateTime (uiDateArch) + ";";
 				uiDateArch += uiDateInc;
 				iPosData += 4;
 				// Код вмешательства 
@@ -295,6 +316,8 @@ namespace TestDRVtransGas.TCPserver
 				else if (uiCodeInterfer == 0xF002)
 					uiCodeInterfer = 0x101;
 			}
+			Parent.OutToWind (asDTArch);
+			Global.AppendRev (BitConverter.GetBytes (uiQuantRowOut * CArchVympel.iaQuantRegByRow[(int)CArchVympel.EArchID.Alarm]*2), 0, btaTX, (int)CArchVympel.ERequest.NumByteData, 1);
 		}
 		//_________________________________________________________________________
 		/// <summary>
@@ -314,23 +337,38 @@ namespace TestDRVtransGas.TCPserver
 		//_________________________________________________________________________
 		private void FillArchH_D (ref int iPosData, byte[] btaRX, ref byte[] btaTX, int iQuantRow)
 		{
-			int iDateInc = (btaRX[(int)CArchVympel.ERequest.IDarch + 1] == 1) ? 60 * 60:24 * 60 * 60;// 6 * 60 : 24 * 60 * 6;
-			uint uiDateArch = uiDateArchBeg + (uint)iDateInc * Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.BeginRec);
-			uint uiDateNow = Global.DateTimeAsInt (DateTime.Now);
+			long uiDateInc = (btaRX[(int)CArchVympel.ERequest.IDarch + 1] == 1) ? (uint)(60 * 60) : (24 * 60 * 60);// 6 * 60 : 24 * 60 * 6;
+			long uiBeginRec = Global.ToUInt16rev (btaRX, (int)CArchVympel.ERequest.BeginRec);
+			long uiDateArch = uiDateArchBeg + uiDateInc * uiBeginRec;
+			long uiDateNow = Global.DateTimeAsInt (DateTime.Now);
+			long lSub = uiDateNow - uiBeginRec;
+			long lDiv = lSub / uiDateInc;
 
+			int uiQuantRowOut = (int)((uiDateNow - uiDateArch) / uiDateInc);
+			if (uiQuantRowOut >= iQuantRow)
+				uiQuantRowOut = iQuantRow;
+			else uiQuantRowOut = (uiQuantRowOut % (iQuantRow + 1));
+			if (uiQuantRowOut < 0)
+				uiQuantRowOut = 0;
+
+			string asDTArch = "";
 			//Parent.OutToWind ((btaRX[14] == 1 ? "Часовой: " : "Суточный: ") + Global.IntToDateTime (uiDateArch - (btaRX[14] == 1 ? 60*60:24*60*60)).ToString());
-			for (int iRow = 0; iRow < iQuantRow; iRow++)
+			for (int iRow = 0; iRow < uiQuantRowOut; iRow++)
 			{
 				if (uiDateArch >= uiDateNow)
 					break;
 				Global.AppendRev (BitConverter.GetBytes (uiDateArch), 0, btaTX, iPosData, 4);
-				uiDateArch += (uint)iDateInc;
+
+				asDTArch += Global.IntToDateTime (uiDateArch) + ";";
+				uiDateArch += (uint)uiDateInc;
 				iPosData += 4;
 				for (int iPosVal = 0; iPosVal < 5; iPosVal++)
 				{
 					FillByVal (fVal++, ref btaTX, ref iPosData);	//FillByFloat
 				}
 			}
+			Parent.OutToWind (asDTArch);
+			Global.AppendRev (BitConverter.GetBytes (uiQuantRowOut * CArchVympel.iaQuantRegByRow[(int)CArchVympel.EArchID.Alarm]*2), 0, btaTX, (int)CArchVympel.ERequest.NumByteData, 1);
 		}
 		//_________________________________________________________________________
 		void FillByVal (dynamic Val, ref byte[] btaTo, ref int iPos)

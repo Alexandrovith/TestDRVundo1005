@@ -330,7 +330,7 @@
 			// ChWordWrap
 			// 
 			this.ChWordWrap.AutoSize = true;
-			this.ChWordWrap.Location = new System.Drawing.Point(32, 60);
+			this.ChWordWrap.Location = new System.Drawing.Point(32, 44);
 			this.ChWordWrap.Name = "ChWordWrap";
 			this.ChWordWrap.Size = new System.Drawing.Size(91, 17);
 			this.ChWordWrap.TabIndex = 101;
@@ -342,6 +342,8 @@
 			// 
 			this.BClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.BClose.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.BClose.Image = global::TestDRVtransGas.Properties.Resources.ExitTranspar;
+			this.BClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BClose.Location = new System.Drawing.Point(4, 547);
 			this.BClose.Name = "BClose";
 			this.BClose.Size = new System.Drawing.Size(160, 32);
@@ -358,9 +360,9 @@
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label1.Location = new System.Drawing.Point(8, 8);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(188, 52);
+			this.label1.Size = new System.Drawing.Size(188, 56);
 			this.label1.TabIndex = 103;
-			this.label1.Text = "Обмен иной программы с прибором по ComPort";
+			this.label1.Text = "Обмен иной программы (TCP/IP) с прибором по ComPort";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// BToClipbrd
@@ -370,7 +372,7 @@
 			this.BToClipbrd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.BToClipbrd.Location = new System.Drawing.Point(0, 0);
 			this.BToClipbrd.Name = "BToClipbrd";
-			this.BToClipbrd.Size = new System.Drawing.Size(123, 44);
+			this.BToClipbrd.Size = new System.Drawing.Size(123, 36);
 			this.BToClipbrd.TabIndex = 105;
 			this.BToClipbrd.Text = "В память ->";
 			this.BToClipbrd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -379,11 +381,11 @@
 			// 
 			// BClearOut
 			// 
-			this.BClearOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.BClearOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.BClearOut.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.BClearOut.Image = global::TestDRVtransGas.Properties.Resources.Orange_System_Icon_06_p6;
 			this.BClearOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.BClearOut.Location = new System.Drawing.Point(2, 92);
+			this.BClearOut.Location = new System.Drawing.Point(2, 64);
 			this.BClearOut.Name = "BClearOut";
 			this.BClearOut.Size = new System.Drawing.Size(43, 40);
 			this.BClearOut.TabIndex = 104;
@@ -400,15 +402,16 @@
 			this.panel1.Controls.Add(this.BToClipbrd);
 			this.panel1.Controls.Add(this.BClearOut);
 			this.panel1.Controls.Add(this.ChWordWrap);
-			this.panel1.Location = new System.Drawing.Point(80, 392);
+			this.panel1.Location = new System.Drawing.Point(80, 420);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(125, 136);
+			this.panel1.Size = new System.Drawing.Size(125, 108);
 			this.panel1.TabIndex = 106;
 			// 
 			// label6
 			// 
+			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(61, 95);
+			this.label6.Location = new System.Drawing.Point(61, 67);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(41, 13);
 			this.label6.TabIndex = 107;
@@ -416,7 +419,8 @@
 			// 
 			// NUDFont
 			// 
-			this.NUDFont.Location = new System.Drawing.Point(61, 111);
+			this.NUDFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.NUDFont.Location = new System.Drawing.Point(61, 83);
 			this.NUDFont.Minimum = new decimal(new int[] {
             2,
             0,

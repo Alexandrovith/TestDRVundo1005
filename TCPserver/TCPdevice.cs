@@ -121,7 +121,7 @@ namespace TestDRVtransGas.TCPserver
 			}
 		}
 		//_________________________________________________________________________
-		virtual public void FillHead_CRC (byte[] btaTX, byte[] btaRX, int iSizeByCRC, int iBeginBuf, int iLenHead = (int)MODBUS3_ANSW.NumByteData)
+		virtual public void FillHead_CRC (byte[] btaTX, ref byte[] btaRX, int iSizeByCRC, int iBeginBuf = 0, int iLenHead = (int)MODBUS3_ANSW.NumByteData)
 		{
 			for (int i = 0; i < iLenHead; i++)
 			{
@@ -134,7 +134,7 @@ namespace TestDRVtransGas.TCPserver
 			//btaTX[iPosTX++] = btaCRC[1];
 		}
 		//_________________________________________________________________________
-		public virtual void FillCRC (byte[] btaTX, int iSizeByCRC, int iBeginBuf)
+		public virtual void FillCRC (byte[] btaTX, int iSizeByCRC, int iBeginBuf = 0)
 		{
 			ushort usCRC = Global.CRC (btaTX, iSizeByCRC, btaTX.Length, Global.Table8005, 0xFFFF, (ushort)iBeginBuf);
 			byte[] btaCRC = BitConverter.GetBytes (usCRC);
@@ -146,7 +146,7 @@ namespace TestDRVtransGas.TCPserver
 		{
 			btaTX = btaBufTX;
 			CreateBufTX (btaRX);
-			return true;
+			return false;
 		}
 		//_________________________________________________________________________
 		public void RestoreVal()
@@ -168,20 +168,37 @@ namespace TestDRVtransGas.TCPserver
 			}
 		}
 		//_________________________________________________________________________
+
+		public const int CRC_LEN = 2;
+		private const int Fl_SIZE = sizeof (float);
+
 		public virtual void CreateBufTX (byte[] btaRX)
 		{
 			if (btaRX != null)
 			{
-				btaBufTX = new byte[10];
-				int i = 0;
-				for (; i < iBeginData; i++)
+				float fVal = 1;
+				int iQuantReg = ((btaRX[(int)MODBUS3_RESP.NumRegH] << 8) + btaRX[(int)MODBUS3_RESP.NumRegL]);
+				int iQuanRegFloat = (iQuantReg / Fl_SIZE);
+				btaBufTX = new byte[(int)MODBUS3_ANSW.Data + iQuantReg * 2 + CRC_LEN];
+				iPosTX = (int)MODBUS3_ANSW.Data;
+
+				for (int i = 0; i < iQuanRegFloat; i++)
 				{
-					btaBufTX[i] = btaRX[i];
+					FillByVal (fVal, ref btaBufTX, ref iPosTX);
+					fVal += 1;
 				}
-				for (; i < btaBufTX.Length; i++)
-				{
-					btaBufTX[i] = (byte)i;
-				}
+
+				FillHead_CRC  (btaBufTX, ref btaRX, btaBufTX.Length - CRC_LEN);
+				//btaBufTX = new byte[10];
+				//int i = 0;
+				//for (; i < iBeginData; i++)
+				//{
+				//	btaBufTX[i] = btaRX[i];
+				//}
+				//for (; i < btaBufTX.Length; i++)
+				//{
+				//	btaBufTX[i] = (byte)i;
+				//}
 			}
 		}
 		//_________________________________________________________________________

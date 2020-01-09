@@ -123,12 +123,6 @@
   <metadata name="TScanParam.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>104, 17</value>
   </metadata>
-  <metadata name="TCTestDRV.DrawGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>222, 17</value>
-  </metadata>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>222, 17</value>
   </metadata>
@@ -217,7 +211,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAk
-        HwAAAk1TRnQBSQFMAwEBAAFwAQEBcAEBATABAAEwAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABwAMA
+        HwAAAk1TRnQBSQFMAwEBAAGAAQEBgAEBATABAAEwAQAE/wEZAQAI/wFCAU0BNgcAATYDAAEoAwABwAMA
         ATADAAEBAQABGAYAAWwSAEL/A9YGqQLBAcID+D///wCxAD//A+0ChQGGAVUBWwFgAVUBWwFgAnwBfQG7
         ArwD8zz//wCxABv/A/4e/wPsAoIBgwExAV4BhwEfAZAB5wEbAZEB5QEwAV4BhgJzAXQDuQLtAe4D/jb/
         /wCxADn/A/EBfgJ/AS0BZQGUARoBgAHGAQUBGwEsAQUBGAEoAQ4BggHGASgBZgGTAnMBdAOzA+kD/jP/

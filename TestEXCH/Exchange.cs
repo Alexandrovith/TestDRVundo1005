@@ -14,7 +14,7 @@ namespace TestDRVtransGas
 	{
 		// Наименования значений по ГОСТ61107
 		public enum EComGOST { SOH = 1, STX = 2, ETX, EOT, ACK = 6, NAK = 0x15, LF = 0x0A, CR = 0x0D }
-		
+
 		public readonly CTestExch Владелец;
 		protected CRecieveMODtcp Recieve;
 		/// <summary>
@@ -82,7 +82,7 @@ namespace TestDRVtransGas
 			//OutMess ("CountHandl " + Recieve.iCountHandle + " ___" + Recieve.iCnt.ToString() + " iCntPeaces=" + Recieve.iCntPieces, "");
 			OutMess ("TCP.RX " + Recieve.RecieveByte + ": [" + Global.ByteArToStr (BufRX, 0, Recieve.RecieveByte) + "]", "");
 
-			if (Владелец.CBDev.SelectedIndex == (int)DEVICE.IRGA2)    //ChIRGA.Checked)
+			if (Владелец.RMG != null)   //if (Владелец.CBDev.SelectedIndex == (int)DEVICE.IRGA2) 
 			{
 				if (BufTX[iPosData] == (byte)ESymComm.CurrVals)
 				{
@@ -167,44 +167,53 @@ namespace TestDRVtransGas
 		//_________________________________________________________________________
 		public virtual bool Request (string asCommand)
 		{
-			iPosData = 0;// (int)EResponseMOD_TCP.AddrSlave;
-			string[] asaComm = asCommand.Split (' ');
-			if (Владелец.UDInverNum.Value <= iCurrRequest)
-				usLenData = (ushort)(asaComm.Length * 2 - Владелец.UDInverShift.Value);
-			else usLenData = (ushort)asaComm.Length;
-
-			InitBufs (new byte[iPosData + usLenData]);
-
-			if (Владелец.RMG == null)
+			try
 			{
-				if (GetSelIndexOfCB (Владелец.CBDev) == (int)DEVICE.IRGA2)      //if (Владелец.CBDev.SelectedIndex == (int)DEVICE.IRGA2)
+				iPosData = 0;// (int)EResponseMOD_TCP.AddrSlave;
+				string[] asaComm = asCommand.Split (' ');
+				if (Владелец.UDInverNum.Value <= iCurrRequest)
+					usLenData = (ushort)(asaComm.Length * 2 - Владелец.UDInverShift.Value);
+				else usLenData = (ushort)asaComm.Length;
+
+				InitBufs (new byte[iPosData + usLenData]);
+
+				if (Владелец.RMG == null)
 				{
-					if (asCommand.Length > 0)
+					if (GetSelIndexOfCB (Владелец.CBDev) == (int)DEVICE.IRGA2)      //if (Владелец.CBDev.SelectedIndex == (int)DEVICE.IRGA2)
 					{
-						if (FillTXirga (asaComm, asCommand) == false)
-							return false;
+						if (asCommand.Length > 0)
+						{
+							if (FillTXirga (asaComm, asCommand) == false)
+								return false;
+						}
+						else usLenData = 0;
 					}
-					else usLenData = 0;
+					else
+					{
+						BufTX = Global.StrHexToBytes (asCommand);
+						if (Владелец.RMG != null)   //if (Владелец.CBDev.Text == "RMG")
+							Global.Conv8n1To7e1 (BufTX, usLenData);
+					}
+				}
+
+				if (IsConnect ())
+				{
+					Recieve.LenAnswer = GetReceivedBytesThreshold (BufTX, iPosData);
+					if (SendComm ())
+					{
+						string asCom = Global.ByteArToStr (BufTX, 0, iPosData + usLenData);
+						OutMess (string.Format ("TCP.TX {0} [{1}]", iCurrRequest + 1, asCom), iCurrRequest == 0 ? Environment.NewLine : "");
+					}
 				}
 				else
 				{
-					BufTX = Global.StrHexToBytes (asCommand);
-					Global.Conv8n1To7e1 (BufTX, usLenData);
+					MessageBox.Show ("[TCP] Нет соединения", "Connect()");
+					return false;
 				}
 			}
-
-			if (IsConnect ())
+			catch (Exception exc)
 			{
-				Recieve.LenAnswer = GetReceivedBytesThreshold (BufTX, iPosData);
-				if (SendComm ())
-				{
-					string asCom = Global.ByteArToStr (BufTX, 0, iPosData + usLenData);
-					OutMess (string.Format ("TCP.TX {0} [{1}]", iCurrRequest + 1, asCom), iCurrRequest == 0 ? Environment.NewLine : "");
-				}
-			}
-			else
-			{
-				MessageBox.Show ("[TCP] Нет соединения", "Connect()");
+				OutMess ($"{exc.Message}{Environment.NewLine}{exc.StackTrace}", Environment.NewLine);
 				return false;
 			}
 			return true;

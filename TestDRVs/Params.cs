@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AXONIM.ScanParamOfDevicves;
 using AXONIM.CONSTS;
+using System.IO;
 //using Opc.Ua.Client;
 
 namespace TestDRVtransGas
@@ -118,6 +119,11 @@ namespace TestDRVtransGas
 		//_________________________________________________________________________
 		public void Close ()
 		{
+		}
+		//_________________________________________________________________________
+		private void ПутьВПамятьToolStripMenuItem_Click (object sender, EventArgs e)
+		{
+			Clipboard.SetText (Path.GetDirectoryName (CBFlDev.Text));
 		}
 	}
 }

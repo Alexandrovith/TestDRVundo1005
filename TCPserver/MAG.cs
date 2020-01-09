@@ -215,7 +215,7 @@ namespace TestDRVtransGas.TCPserver
 
 			}
 
-			FillHead_CRC(btaTX, btaRX, btaTX.Length - 2, 0);
+			FillHead_CRC(btaTX, ref btaRX, btaTX.Length - 2, 0);
 			//FillHead_CRC (btaTX, btaRX, iSizeByCRC, 0, (int)MODBUS3_ANSW.Func + (int)EResponseMOD_TCP.Func);
 			return false;
 		}
